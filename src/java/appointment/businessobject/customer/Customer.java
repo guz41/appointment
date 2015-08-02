@@ -16,7 +16,7 @@ public class Customer {
     
     public Customer (String FirstName,String LastName,long iD) {
         this.firstName = FirstName;
-        this.lastName = lastName;
+        this.lastName = LastName;
         this.ID = iD;
     }
     /**
