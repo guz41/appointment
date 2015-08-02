@@ -22,15 +22,14 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Placeholder</title>
-        <link rel="stylesheet" type="text/css" href="style.css">
-    </head>
-    <body>
-        <table border="0">
+
+                <div class="mdl-card mdl-shadow--2dp demo-card-wide" style="margin-left: auto; margin-right: auto; margin-top: 15px;">
+                    <form name="form1" action="response.jsp">
+                        <div class="mdl-card__title">
+                            <h2 class="mdl-card__title-text">Response</h2>
+                        </div>
+                        <div class="mdl-card__supporting-text">
+                                    <table border="0">
             <thead>
                 <tr>
                     <th colspan="2">{<%= request.getRemoteAddr()%>}</th>
@@ -71,3 +70,9 @@
 </table>
 </body>
 </html>
+            </tbody>
+        </table>
+                        </div>
+
+                    </form>
+                </div>
