@@ -1,6 +1,19 @@
 
 <%@page import="appointment.businessobject.customer.Customer"%>
 <%@page import="appointment.data.ObjectFactory"%>
+
+        <%
+            ObjectFactory afactory = new ObjectFactory();
+            Customer test = afactory.getCustomer(1);
+            //String userID = request.getParameter("userid");
+            //String userStatus = getUserStatus(userID);
+            //String audioFile = "";
+            //if (userStatus.equals(UserStatus.NEW)) {
+            //    audioFile = "new.wav";
+           // } else {
+            //    audioFile = "existing.wav";
+           // }
+        %>
 <%-- 
     Document   : response
     Created on : 02/08/2015, 3:41:27 PM
@@ -16,22 +29,10 @@
         <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body>
-        <%
-            ObjectFactory afactory = new ObjectFactory();
-            Customer test = afactory.getCustomer(1);
-            //String userID = request.getParameter("userid");
-            //String userStatus = getUserStatus(userID);
-            //String audioFile = "";
-            //if (userStatus.equals(UserStatus.NEW)) {
-            //    audioFile = "new.wav";
-           // } else {
-            //    audioFile = "existing.wav";
-           // }
-        %>
         <table border="0">
             <thead>
                 <tr>
-                    <th colspan="2">{test}</th>
+                    <th colspan="2">{<%=test.toString()%>}</th>
                 </tr>
             </thead>
             <tbody>
