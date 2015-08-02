@@ -24,8 +24,16 @@
                     <td></td>
                 </tr>
                 <tr>
-                    <td><form name="okay" action="response.jsp">
-                        </form></td>
+                    <td>
+                        <form name="form1" action="response.jsp">
+                            <strong>Select a subject:</strong>
+                            <select name="dropdown list">
+                                <option></option>
+                                <option></option>
+                            </select>
+                            <input type="submit" value="Okay" name="Okay" />
+                        </form>
+                    </td>
                 </tr>
             </tbody>
         </table>
