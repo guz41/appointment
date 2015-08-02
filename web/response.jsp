@@ -1,19 +1,20 @@
 
 <%@page import="appointment.businessobject.customer.Customer"%>
 <%@page import="appointment.data.ObjectFactory"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-        <%
-            ObjectFactory afactory = new ObjectFactory();
-            Customer test = afactory.getCustomer(1);
-            //String userID = request.getParameter("userid");
-            //String userStatus = getUserStatus(userID);
-            //String audioFile = "";
-            //if (userStatus.equals(UserStatus.NEW)) {
-            //    audioFile = "new.wav";
-           // } else {
-            //    audioFile = "existing.wav";
-           // }
-        %>
+<%
+    ObjectFactory afactory = new ObjectFactory();
+    Customer test = afactory.getCustomer(2);
+    //String userID = request.getParameter("userid");
+    //String userStatus = getUserStatus(userID);
+    //String audioFile = "";
+    //if (userStatus.equals(UserStatus.NEW)) {
+    //    audioFile = "new.wav";
+    // } else {
+    //    audioFile = "existing.wav";
+            // }
+%>
 <%-- 
     Document   : response
     Created on : 02/08/2015, 3:41:27 PM
@@ -32,7 +33,7 @@
         <table border="0">
             <thead>
                 <tr>
-                    <th colspan="2">{<%=test.toString()%>}</th>
+                    <th colspan="2">{<%= request.getRemoteAddr()%>}</th>
                 </tr>
             </thead>
             <tbody>
@@ -42,7 +43,7 @@
                 </tr>
                 <tr>
                     <td><strong>Counselor: </strong></td>
-                    <td><%= test.getFirstName() + " " + test.getLastName() %>
+                    <td><%= test.getFirstName() + " " + test.getLastName()%>
                         <br>
                         <span style="font-size:smaller; font-style:italic;">
                             member since: {placeholder}</span>
@@ -55,7 +56,18 @@
                         <br><strong>phone: </strong>{placeholder}
                     </td>
                 </tr>
-            </tbody>
-        </table>
-    </body>
+                <tr>
+            <table>
+                <c:forEach items="${test}" var="test">
+                    <tr>
+                        <td>${product.name}</td>
+                        <td>${product.description}</td>
+                        <td>${product.price}</td>
+                    </tr>
+                </c:forEach>
+            </table>
+        </tr>
+    </tbody>
+</table>
+</body>
 </html>
