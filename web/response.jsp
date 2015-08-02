@@ -1,4 +1,6 @@
 
+<%@page import="appointment.businessobject.customer.Customer"%>
+<%@page import="appointment.data.ObjectFactory"%>
 <%-- 
     Document   : response
     Created on : 02/08/2015, 3:41:27 PM
@@ -14,10 +16,22 @@
         <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body>
+        <%
+            ObjectFactory afactory = new ObjectFactory();
+            Customer test = afactory.getCustomer(1);
+            //String userID = request.getParameter("userid");
+            //String userStatus = getUserStatus(userID);
+            //String audioFile = "";
+            //if (userStatus.equals(UserStatus.NEW)) {
+            //    audioFile = "new.wav";
+           // } else {
+            //    audioFile = "existing.wav";
+           // }
+        %>
         <table border="0">
             <thead>
                 <tr>
-                    <th colspan="2">{placeholder}</th>
+                    <th colspan="2">{test}</th>
                 </tr>
             </thead>
             <tbody>
@@ -27,7 +41,7 @@
                 </tr>
                 <tr>
                     <td><strong>Counselor: </strong></td>
-                    <td>{placeholder}
+                    <td><%= test.getFirstName() + " " + test.getLastName() %>
                         <br>
                         <span style="font-size:smaller; font-style:italic;">
                             member since: {placeholder}</span>
