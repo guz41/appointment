@@ -10,6 +10,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Homepage</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body>
         <h1>Hello World! this is the best calendar app VICTORY!! VICTORY!!</h1>
