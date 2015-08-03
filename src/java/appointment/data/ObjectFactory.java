@@ -6,6 +6,8 @@
 package appointment.data;
 
 import appointment.businessobject.customer.Customer;
+import java.util.ArrayList;
+import java.util.List;
 import simplemysql.SimpleMySQL;
 import simplemysql.SimpleMySQLResult;
 
@@ -33,6 +35,19 @@ public class ObjectFactory {
         }
         
         return returnCustomer;
+    }
+    
+        public List<Customer> getAllCustomers(){
+        ArrayList<Customer> allCustomers = new ArrayList();
+        
+        SimpleMySQLResult result;
+        result = mysql.Query ("SELECT * FROM customer");
+
+        while (result.next()){       
+            allCustomers.add(new Customer(result.getString("first_name"), result.getString("last_name"), Long.parseLong(result.getString("cust_id"))));
+        }
+        
+        return allCustomers;
     }
     
     public Customer addCustomer(Customer newCustomer){

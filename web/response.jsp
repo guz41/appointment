@@ -7,11 +7,7 @@
 
 <%
     ObjectFactory afactory = new ObjectFactory();
-    Customer test = afactory.getCustomer(2);
-    Customer test1 = afactory.getCustomer(1);
-    List<Customer> allCustomers = new ArrayList();
-    allCustomers.add(test);
-    allCustomers.add(test1);
+    List<Customer> allCustomers = afactory.getAllCustomers();
     request.setAttribute("allCustomers", allCustomers);
     //String userID = request.getParameter("userid");
     //String userStatus = getUserStatus(userID);
