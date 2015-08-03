@@ -9,6 +9,11 @@ package appointment.businessobject.customer;
  *
  * @author Gus
  */
+
+/**
+ * Make this data object self describing, including mapping to DB and ability to list all fields (inc, characteristics)
+ * @author Marrows
+ */
 public class Customer {
      private String firstName;
     private String lastName;
