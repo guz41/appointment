@@ -12,7 +12,9 @@ import simplemysql.SimpleMySQL;
 import simplemysql.SimpleMySQLResult;
 
 /**
- *
+ *http://stackoverflow.com/questions/6272861/how-to-prevent-sql-injection-in-jsp
+ * http://www.javacodegeeks.com/2012/11/sql-injection-in-java-application.html
+ * 
  * @author Marrows
  */
 public class ObjectFactory {
