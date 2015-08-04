@@ -18,6 +18,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <jsp:useBean id="test" class="appointment.bean.TestBean" />
 <jsp:setProperty name="test" property="message" value="think i broke your box, but this is how to use tags..." />
+<jsp:useBean id="test1" class="appointment.businessobject.customer.Customer" />
+
 
 <div class="mdl-card mdl-shadow--2dp demo-card-wide" style="width: 700px; margin-left: auto; margin-right: auto; margin-top: 15px;">
     <div class="mdl-card__title">
