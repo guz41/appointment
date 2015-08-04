@@ -3,22 +3,19 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="appointment.businessobject.customer.Customer"%>
 <%@page import="appointment.data.ObjectFactory"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%-- 
     Document   : response
     Created on : 02/08/2015, 3:41:27 PM
     Author     : Gus
 --%>
-<%
-    ObjectFactory afactory = new ObjectFactory();
-    List<Customer> allCustomers = afactory.getAllCustomers();
-    request.setAttribute("allCustomers", allCustomers);
-%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+
 <jsp:useBean id="test" class="appointment.bean.TestBean" />
-<jsp:setProperty name="test" property="message" value="think i broke your box, but this is how to use tags..." />
-<jsp:useBean id="test1" class="appointment.businessobject.customer.Customer" />
+<jsp:setProperty name="test" property="message" value="Customer" />
+<jsp:useBean id="customers" class="appointment.data.ObjectFactory" />
 
 
 <div class="mdl-card mdl-shadow--2dp demo-card-wide" style="width: 700px; margin-left: auto; margin-right: auto; margin-top: 15px;">
@@ -34,7 +31,7 @@
                     <th>Last Name</th>
                 </tr>
             </thead>
-            <c:forEach items="${allCustomers}" var="customer">
+            <c:forEach items="${customers.allCustomers}" var="customer">
                 <tr>
                     <td>${customer.getID()}</td>
                     <td>${customer.getLastName()}</td>
