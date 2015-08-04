@@ -14,13 +14,14 @@
 
 
 <jsp:useBean id="test" class="appointment.bean.TestBean" />
-<jsp:setProperty name="test" property="message" value="Customer" />
+<jsp:setProperty name="test" property="message" param="first_name" />
+<%--<jsp:setProperty />--%>
 <jsp:useBean id="customers" class="appointment.data.ObjectFactory" />
 
 
 <div class="mdl-card mdl-shadow--2dp demo-card-wide" style="width: 700px; margin-left: auto; margin-right: auto; margin-top: 15px;">
     <div class="mdl-card__title">
-        <h2 class="mdl-card__title-text"><jsp:getProperty name="test" property="message" /></h2>
+        <h2 class="mdl-card__title-text"><jsp:getProperty name="test" property="message"/></h2>
     </div>
     <div class="mdl-card__supporting-text">
         <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
