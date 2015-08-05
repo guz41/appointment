@@ -12,6 +12,7 @@ import simplemysql.SimpleMySQL;
 import simplemysql.SimpleMySQLResult;
 import java.sql.*;
 
+
 /**
  *
  * @author Marrows
@@ -41,9 +42,23 @@ public class ObjectFactory_tutorial {
       //STEP 4: Execute a query
       System.out.println("Creating statement...");
       stmt = conn.createStatement();
-      String sql;
-      sql = "SELECT * FROM customer";
-      ResultSet rs = stmt.executeQuery(sql);
+      String sql2;
+      sql2 = "SELECT * FROM customer";
+      
+        String first_name = "test";
+        String last_name = "commit";
+ 
+//        String sql = "INSERT INTO customer (first_name, last_name) VALUES (?, ?)";
+//        PreparedStatement preparedStatement = conn.prepareStatement(sql);
+//        preparedStatement.setString(1, first_name);
+//        preparedStatement.setString(2, last_name);
+//        preparedStatement.executeUpdate();
+        ResultSet rs = stmt.executeQuery(sql2);
+      
+
+      
+
+      
 
       //STEP 5: Extract data from result set
       while(rs.next()){
@@ -53,7 +68,7 @@ public class ObjectFactory_tutorial {
 
          //Display values
          System.out.print("First: " + first);
-         System.out.println("Last: " + last);
+         System.out.println(" Last: " + last);
       }
       //STEP 6: Clean-up environment
       rs.close();

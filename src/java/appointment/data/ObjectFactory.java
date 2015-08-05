@@ -56,7 +56,6 @@ public class ObjectFactory {
         
         SimpleMySQLResult result;
         result = mysql.Query ("INSERT INTO customer (first_name, last_name) VALUES(\"" + newCustomer.getFirstName() + "\", \"" + newCustomer.getLastName() + "\"");
-        
         return newCustomer;
     }
 }
