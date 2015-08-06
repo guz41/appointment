@@ -12,6 +12,8 @@ package appointment.businessobject.customer;
 
 /**
  * Make this data object self describing, including mapping to DB and ability to list all fields (inc, characteristics)
+ * Create an interface called self-describing base object, has methods that detail mapping to DB and complete char lists
+ * Create an implementation of interface that extends base objects (Customer Object), keep seperate to allow object searliasiatiion?? May not matter because mthods are static.
  * @author Marrows
  */
 public class Customer {

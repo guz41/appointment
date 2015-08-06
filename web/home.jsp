@@ -5,7 +5,7 @@
 --%>
 <jsp:useBean id="customers1" class="appointment.data.ObjectFactory" />
 <div class="mdl-card mdl-shadow--2dp demo-card-wide" style="margin-left: auto; margin-right: auto; margin-top: 15px;">
-    <form name="form1" action="response.jsp" method="post">
+    <form name="form1" action="index.jsp?page=response" method="post">
         <div class="mdl-card__title">
             <h2 class="mdl-card__title-text">Hello World!</h2>
         </div>
