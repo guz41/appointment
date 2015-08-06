@@ -16,7 +16,7 @@
         </div>
         <input type="submit" value="submit" />
         <div class="mdl-card__actions mdl-card--border">
-            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="index.jsp?name=response">
+            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="index.html?name=response">
                 Get Started
             </a>
         </div>

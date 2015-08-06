@@ -85,7 +85,7 @@
                 <header class="demo-drawer-header">
                     <img src="images/user.jpg" class="demo-avatar">
                     <div class="demo-avatar-dropdown">
-                        <span>hello@email.com</span>
+                        <span>${acustomer.getFirstName()} ${acustomer.getLastName()}</span>
                         <div class="mdl-layout-spacer"></div>
                         <button id="accbtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
                             <i class="material-icons">arrow_drop_down</i>
@@ -96,8 +96,8 @@
                     </div>
                 </header>
                 <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
-                    <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons">home</i>Home</a>
-                    <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons">inbox</i>Manage Resources</a>
+                    <a class="mdl-navigation__link" href="index.html?name=home"><i class="mdl-color-text--blue-grey-400 material-icons">home</i>Home</a>
+                    <a class="mdl-navigation__link" href="index.html?name=response"><i class="mdl-color-text--blue-grey-400 material-icons">inbox</i>Manage Resources</a>
 
                     <div class="mdl-layout-spacer"></div>
                     <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons">help_outline</i>Help</a>
