@@ -25,7 +25,7 @@ public class ObjectFactory {
     static final String USER = "sysuser";
     static final String PASS = "sysuser00";
 
-    public Customer setCustomer(Customer cust) {
+    public Customer addCustomer(Customer cust) {
         Connection conn = null;
         Statement stmt = null;
         Customer returnCust = null;
