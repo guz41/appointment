@@ -8,6 +8,7 @@ import appointment.data.ObjectFactory;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -25,6 +26,15 @@ public class DataResource {
         ObjectFactory dataObjectFactory = new ObjectFactory();
         final Customer theCustomer = dataObjectFactory.getCustomer(CustomerID);
 
+        return theCustomer;
+    }
+    
+    //The method below should be updated to PUT but can't be without effort
+    @RequestMapping(value = "/customers", method = RequestMethod.PUT, produces="application/json", consumes="application/json")
+    public Customer addCustomer(@RequestBody Customer customer) {
+        ObjectFactory dataObjectFactory = new ObjectFactory();
+        final Customer theCustomer = dataObjectFactory.addCustomer(customer);
+        
         return theCustomer;
     }
     

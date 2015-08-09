@@ -24,7 +24,10 @@ public class Customer {
     private String firstName;
     private String lastName;
     private long ID;
-
+    
+    public Customer(){
+        
+    }
     public Customer(String FirstName, String LastName, long ID) {
         this.firstName = FirstName;
         this.lastName = LastName;

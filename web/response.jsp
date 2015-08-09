@@ -13,8 +13,21 @@
     <div class="mdl-card__title">
         <h2 class="mdl-card__title-text">Customers</h2>
     </div>
-    <div class="mdl-card__supporting-text">
-        <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" ng-controller="CustomerListCtrl">
+    <div class="mdl-card__supporting-text" ng-controller="CustomerListCtrl">
+
+            <div class="mdl-textfield mdl-js-textfield">
+              <input class="mdl-textfield__input" type="text" id="firstname" />
+              <label class="mdl-textfield__label" for="firstname">First Name</label>
+            </div>
+            <div class="mdl-textfield mdl-js-textfield">
+              <input class="mdl-textfield__input" type="text" id="lastname" />
+              <label class="mdl-textfield__label" for="lastname">Last Name</label>
+            </div>
+            <button class="mdl-button mdl-js-button mdl-button--raised" ng-click="addCustomer()">
+                Add
+              </button>
+
+        <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
             <thead>
                 <tr>
                     <th>ID</th>
