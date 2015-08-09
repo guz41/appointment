@@ -5,6 +5,10 @@
  */
 package appointment.businessobject.customer;
 
+
+
+
+
 /**
  *
  * @author Gus
@@ -16,7 +20,7 @@ package appointment.businessobject.customer;
  * Create an implementation of interface that extends base objects (Customer Object), keep seperate to allow object searliasiatiion?? May not matter because mthods are static.
  * @author Marrows
  */
-public class Customer {
+public class Customer  {
      private String firstName;
     private String lastName;
     private long ID;
@@ -59,5 +63,10 @@ public class Customer {
      */
     public long getID() {
         return ID;
+    }
+    
+
+    public void setID(long iD) {
+        this.ID = iD;
     }
 }

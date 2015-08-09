@@ -45,14 +45,14 @@ public class ObjectFactory_tutorial {
       String sql2;
       sql2 = "SELECT * FROM customer";
       
-        String first_name = "test";
-        String last_name = "commit";
+        String first_name = "What";
+        String last_name = "Up";
  
-//        String sql = "INSERT INTO customer (first_name, last_name) VALUES (?, ?)";
-//        PreparedStatement preparedStatement = conn.prepareStatement(sql);
-//        preparedStatement.setString(1, first_name);
-//        preparedStatement.setString(2, last_name);
-//        preparedStatement.executeUpdate();
+        String sql = "INSERT INTO customer (first_name, last_name) VALUES (?, ?)";
+        PreparedStatement preparedStatement = conn.prepareStatement(sql);
+        preparedStatement.setString(1, first_name);
+        preparedStatement.setString(2, last_name);
+        preparedStatement.executeUpdate();
         ResultSet rs = stmt.executeQuery(sql2);
       
 

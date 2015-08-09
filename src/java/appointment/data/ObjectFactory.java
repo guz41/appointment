@@ -39,7 +39,7 @@ public class ObjectFactory {
         return returnCustomer;
     }
     
-        public List<Customer> getAllCustomers(){
+    public List<Customer> getAllCustomers(){
         ArrayList<Customer> allCustomers = new ArrayList();
         
         SimpleMySQLResult result;
