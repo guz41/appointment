@@ -20,8 +20,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class DataResource {
     
-    @RequestMapping(value = "/customer/{CustomerID}", method = RequestMethod.GET, produces="application/json")
-    public Customer getCustomer(@PathVariable long CustomerID) {
+    @RequestMapping(value = "/customers/{CustomerID}", method = RequestMethod.GET, produces="application/json")
+    public Customer readCustomer(@PathVariable long CustomerID) {
         ObjectFactory dataObjectFactory = new ObjectFactory();
         final Customer theCustomer = dataObjectFactory.getCustomer(CustomerID);
 
@@ -29,7 +29,7 @@ public class DataResource {
     }
     
     @RequestMapping(value = "/customers", method = RequestMethod.GET, produces="application/json")
-    public ArrayList<Customer> getCustomers() {
+    public ArrayList<Customer> readCustomers() {
         ObjectFactory dataObjectFactory = new ObjectFactory();
         ArrayList<Customer> theCustomers = (ArrayList<Customer>) dataObjectFactory.getAllCustomers();
         

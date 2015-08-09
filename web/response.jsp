@@ -1,8 +1,3 @@
-
-<%@page import="java.util.List"%>
-<%@page import="java.util.ArrayList"%>
-<%@page import="appointment.businessobject.customer.Customer"%>
-<%@page import="appointment.data.ObjectFactory"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
@@ -13,21 +8,13 @@
 --%>
 
 
-<jsp:useBean id="test" class="appointment.bean.TestBean" />
-<%--<jsp:setProperty name="test" property="first_name"  />
-<jsp:setProperty name="test" property="last_name"  />--%>
-<jsp:setProperty name="test" property="*"  />
 
-<%--<jsp:setProperty />--%>
-<jsp:useBean id="customers" class="appointment.data.ObjectFactory" />
-
-
-<div class="mdl-card mdl-shadow--2dp demo-card-wide" style="width: 700px; margin-left: auto; margin-right: auto; margin-top: 15px;">
+<div class="mdl-card mdl-shadow--2dp demo-card-wide" style="width: 700px; margin-left: auto; margin-right: auto; margin-top: 15px;" >
     <div class="mdl-card__title">
-        <h2 class="mdl-card__title-text">${test.commitToDb()}</h2>
+        <h2 class="mdl-card__title-text">Customers</h2>
     </div>
     <div class="mdl-card__supporting-text">
-        <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
+        <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" ng-controller="CustomerListCtrl">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -35,13 +22,12 @@
                     <th>Last Name</th>
                 </tr>
             </thead>
-            <c:forEach items="${customers.allCustomers}" var="customer">
-                <tr>
-                    <td>${customer.getID()}</td>
-                    <td>${customer.getLastName()}</td>
-                    <td>${customer.getFirstName()}</td>
+                <tr ng-repeat="customer in customers">
+                    <td class="mdl-data-table__cell--non-numeric">{{customer.id}}</td>
+                    <td>{{customer.firstName}}</td>
+                    <td>{{customer.lastName}}</td>
                 </tr>
-            </c:forEach>
         </table>
     </div>
 </div>
+        
