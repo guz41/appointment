@@ -30,11 +30,11 @@ public class DataResource {
     }
     
     //The method below should be updated to PUT but can't be without effort
-    @RequestMapping(value = "/customers", method = RequestMethod.PUT, produces="application/json", consumes="application/json")
+    @RequestMapping(value = "/customers", method = RequestMethod.POST, produces="application/json", consumes="application/json")
     public Customer addCustomer(@RequestBody Customer customer) {
         ObjectFactory dataObjectFactory = new ObjectFactory();
         final Customer theCustomer = dataObjectFactory.addCustomer(customer);
-        
+
         return theCustomer;
     }
     

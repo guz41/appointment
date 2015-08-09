@@ -8,7 +8,5 @@ var appointmentServices = angular.module('appointmentServices', ['ngResource']);
 
 appointmentServices.factory('Customer', ['$resource',
   function($resource){
-    return $resource('customers/:customerId', {}, {
-      query: {method:'GET', params:{customerId:''}, isArray:true}
-    });
+    return $resource('customers/:customerId', {}, {});
   }]);

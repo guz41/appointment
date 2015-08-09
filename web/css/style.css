@@ -8,59 +8,24 @@ and open the template in the editor.
     Author     : Gus
 */
 
-body {
-    font-family: Verdana, Arial, sans-serif;
-    font-size: smaller;
-    padding: 50px;
-    color: #555;
-}
-
-h1 {
-    text-align: left;
-    letter-spacing: 6px;
-    font-size: 1.4em;
-    color: #be7429;
-    font-weight: normal;
-    width: 450px;
-}
-
 table {
-    width: 580px;
-    padding: 10px;
-    background-color: #c5e7e0;
+    width: 100%;
 }
-
-th {
-    text-align: left;
-    border-bottom: 1px solid;
-}
-
-td {
-    padding: 10px;
-}
-
-a:link {
-   color: #be7429;
-   font-weight: normal;
-   text-decoration: none;
-}
-
-a:link:hover {
-   color: #be7429;
-   font-weight: normal;
-   text-decoration: underline;
-}
-
-//Material design cards
-  .demo-card-wide.mdl-card {
-    width: 712px;
-    
+  
+  .mdl-progress_appointment {
+      margin-left: auto;
+      margin-right:auto;
   }
-  .demo-card-wide > .mdl-card__title {
-    color: #fff;
-    height: 176px;
-    background: url('../assets/demos/welcome_card.jpg') center / cover;
+  .mdl-textfield{
+      width: 100% !important;
   }
-  .demo-card-wide > .mdl-card__menu {
-    color: #fff;
+  
+  .demo-card-wide{
+       width: 94%; 
+       margin: 3%;
+  }
+  
+  .customer-main-content {
+      width: 96%;
+      padding: 2%;
   }

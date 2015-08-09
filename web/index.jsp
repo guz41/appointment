@@ -49,6 +49,7 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" href="css/material.min.css">
         <link rel="stylesheet" href="css/styles.css">
+        <link rel="stylesheet" href="css/style.css">
         <style>
             #view-source {
                 position: fixed;

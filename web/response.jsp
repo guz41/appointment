@@ -9,23 +9,36 @@
 
 
 
-<div class="mdl-card mdl-shadow--2dp demo-card-wide" style="width: 700px; margin-left: auto; margin-right: auto; margin-top: 15px;" >
+<div class="mdl-card mdl-shadow--2dp demo-card-wide" >
     <div class="mdl-card__title">
         <h2 class="mdl-card__title-text">Customers</h2>
     </div>
-    <div class="mdl-card__supporting-text" ng-controller="CustomerListCtrl">
+    <div class="mdl-card__supporting-text customer-main-content" ng-controller="CustomerListCtrl">
+        <!-- MDL Progress Bar with Indeterminate Progress -->
+        <div id="p2" class="mdl-progress mdl-js-progress mdl-progress__indeterminate mdl-progress_appointment" ng-show="showProgressBar"></div>
+        <div class="mdl-grid">
+            <div class="mdl-cell mdl-cell--5-col">
+                <div class="mdl-textfield mdl-js-textfield">
+                    <input class="mdl-textfield__input" type="text" id="firstname" ng-model="newCustomer.firstName" />
+                    <label class="mdl-textfield__label" for="firstname">First Name</label>
+                </div>
+            </div>
+            <div class="mdl-cell mdl-cell--5-col">
+                <div class="mdl-textfield mdl-js-textfield">
+                    <input class="mdl-textfield__input" type="text" id="lastname" ng-model="newCustomer.lastName" />
+                    <label class="mdl-textfield__label" for="lastname">Last Name</label>
+                </div>
+            </div>
+            <div class="mdl-cell mdl-cell--2-col">
+                <button class="mdl-button mdl-js-button mdl-button--raised" ng-click="addCustomer()">
+                    Add
+                </button>
 
-            <div class="mdl-textfield mdl-js-textfield">
-              <input class="mdl-textfield__input" type="text" id="firstname" />
-              <label class="mdl-textfield__label" for="firstname">First Name</label>
             </div>
-            <div class="mdl-textfield mdl-js-textfield">
-              <input class="mdl-textfield__input" type="text" id="lastname" />
-              <label class="mdl-textfield__label" for="lastname">Last Name</label>
-            </div>
-            <button class="mdl-button mdl-js-button mdl-button--raised" ng-click="addCustomer()">
-                Add
-              </button>
+        </div>
+
+
+
 
         <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
             <thead>
@@ -35,12 +48,11 @@
                     <th>Last Name</th>
                 </tr>
             </thead>
-                <tr ng-repeat="customer in customers">
-                    <td class="mdl-data-table__cell--non-numeric">{{customer.id}}</td>
-                    <td>{{customer.firstName}}</td>
-                    <td>{{customer.lastName}}</td>
-                </tr>
+            <tr ng-repeat="customer in customers">
+                <td class="mdl-data-table__cell--non-numeric">{{customer.id}}</td>
+                <td>{{customer.firstName}}</td>
+                <td>{{customer.lastName}}</td>
+            </tr>
         </table>
     </div>
 </div>
-        

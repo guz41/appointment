@@ -9,9 +9,18 @@ var appointmentApp = angular.module('appointmentApp', ['appointmentServices']);
 
 appointmentApp.controller('CustomerListCtrl', ['$scope', 'Customer', function($scope, Customer) {
   //$scope.customers = Customer.query();
-  $scope.customers = Customer.query();
+  $scope.showProgressBar = true;
+  $scope.customers = Customer.query({}, function(){
+      $scope.showProgressBar = false;
+  });
   $scope.addCustomer = function() {
-      var newCustomer = {"firstName":"Added","lastName":"Customer","id":1}
-      $scope.customers.push(newCustomer);
+      $scope.showProgressBar = true;
+      var newCustomer = $scope.newCustomer;
+      
+      Customer.save({},newCustomer, function(returnedCustomer){
+          $scope.customers.push(returnedCustomer);
+          $scope.showProgressBar = false;
+          $scope.newCustomer = {};
+      });
     };
 }]);
