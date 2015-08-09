@@ -250,6 +250,7 @@ public class ObjectFactory {
         //test2 = a.setCustomer(test1);
         //test2 = a.getCustomer(test1);
         test2 = a.getAllCustomers().get(2);
+
         System.out.println(test2.getFirstName() + " " + test2.getLastName() + " " + test2.getID());
                 
     }
