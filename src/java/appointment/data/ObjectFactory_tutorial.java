@@ -17,89 +17,161 @@ import java.sql.*;
  *
  * @author Marrows
  */
-
-
-
 public class ObjectFactory_tutorial {
-   // JDBC driver name and database URL
-   static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";  
-   static final String DB_URL = "jdbc:mysql://52.27.193.81/base";
-   //  Database credentials
-   static final String USER = "sysuser";
-   static final String PASS = "sysuser00";
-   
-   public static void main(String[] args) {
-   Connection conn = null;
-   Statement stmt = null;
-   try{
-      //STEP 2: Register JDBC driver
-      Class.forName("com.mysql.jdbc.Driver");
 
-      //STEP 3: Open a connection
-      System.out.println("Connecting to database...");
-      conn = DriverManager.getConnection(DB_URL,USER,PASS);
+    // JDBC driver name and database URL
 
-      //STEP 4: Execute a query
-      System.out.println("Creating statement...");
-      stmt = conn.createStatement();
-      String sql2;
-      sql2 = "SELECT * FROM customer";
-      
-        String first_name = "What";
-        String last_name = "Up";
- 
-        String sql = "INSERT INTO customer (first_name, last_name) VALUES (?, ?)";
-        PreparedStatement preparedStatement = conn.prepareStatement(sql);
-        preparedStatement.setString(1, first_name);
-        preparedStatement.setString(2, last_name);
-        preparedStatement.executeUpdate();
-        ResultSet rs = stmt.executeQuery(sql2);
-      
+    static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
+    static final String DB_URL = "jdbc:mysql://52.27.193.81/base";
+    //  Database credentials
+    static final String USER = "sysuser";
+    static final String PASS = "sysuser00";
 
-      
+    public Customer setCustomer(Customer cust) {
+        Connection conn = null;
+        Statement stmt = null;
+        Customer returnCust = null;
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            conn = DriverManager.getConnection(DB_URL, USER, PASS);
 
-      
+            stmt = conn.createStatement();
 
-      //STEP 5: Extract data from result set
-      while(rs.next()){
-         //Retrieve by column name
-         String first = rs.getString("first_name");
-         String last = rs.getString("last_name");
 
-         //Display values
-         System.out.print("First: " + first);
-         System.out.println(" Last: " + last);
-      }
-      //STEP 6: Clean-up environment
-      rs.close();
-      stmt.close();
-      conn.close();
-   }catch(SQLException se){
-      //Handle errors for JDBC
-      se.printStackTrace();
-   }catch(Exception e){
-      //Handle errors for Class.forName
-      e.printStackTrace();
-   }finally{
-      //finally block used to close resources
-      try{
-         if(stmt!=null)
+            String first_name = cust.getFirstName();
+            String last_name = cust.getLastName();
+
+            //prep string and execute
+            String insertStatement = "INSERT INTO customer (first_name, last_name) VALUES (?, ?)";
+            PreparedStatement preparedStatement = conn.prepareStatement(insertStatement);
+            preparedStatement.setString(1, first_name);
+            preparedStatement.setString(2, last_name);
+            preparedStatement.executeUpdate();
+            
+            String selectStatement;
+            selectStatement = "SELECT * FROM customer";
+            ResultSet rs = stmt.executeQuery(selectStatement);
+
+            // Extract data from result set
+            while (rs.next()) {
+                //Retrieve by column name
+                String first = rs.getString("first_name");
+                String last = rs.getString("last_name");
+
+                returnCust = new Customer(first, last, (long) 1);
+                return returnCust;
+                
+            }
+            // Clean-up environment
+            rs.close();
             stmt.close();
-      }catch(SQLException se2){
-      }// nothing we can do
-      try{
-         if(conn!=null)
             conn.close();
-      }catch(SQLException se){
-         se.printStackTrace();
-      }//end finally try
-   }//end try
-   System.out.println("Goodbye!");
-}//end main
+        } catch (SQLException se) {
+            //Handle errors for JDBC
+
+        } catch (ClassNotFoundException e) {
+            //Handle errors for Class.forName
+
+        } finally {
+            //finally block used to close resources
+            try {
+                if (stmt != null) {
+                    stmt.close();
+                }
+            } catch (SQLException se2) {
+            }// nothing we can do
+            try {
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (SQLException se) {
+                  
+
+        }
+
+
+    }
+        return null;
 }
 
-
-
+    
+    public static void main(String[] args) {
+        Customer test1 = new Customer("Test1","Test2",(long) 1);
+        Customer test2;
+        ObjectFactory_tutorial a = new ObjectFactory_tutorial();
+        test2 = a.setCustomer(test1);
+        System.out.println(test2.getFirstName() + " " + test2.getLastName());
+        
+        
+    }
+}
+    
+//    public static void main(String[] args) {
+//        Connection conn = null;
+//        Statement stmt = null;
+//        try {
+//            //STEP 2: Register JDBC driver
+//            Class.forName("com.mysql.jdbc.Driver");
+//
+//            //STEP 3: Open a connection
+//            System.out.println("Connecting to database...");
+//            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+//
+//            //STEP 4: Execute a query
+//            System.out.println("Creating statement...");
+//            stmt = conn.createStatement();
+//            String sql2;
+//            sql2 = "SELECT * FROM customer";
+//
+//            String first_name = "What";
+//            String last_name = "Up";
+//
+//            String sql = "INSERT INTO customer (first_name, last_name) VALUES (?, ?)";
+//            PreparedStatement preparedStatement = conn.prepareStatement(sql);
+//            preparedStatement.setString(1, first_name);
+//            preparedStatement.setString(2, last_name);
+//            preparedStatement.executeUpdate();
+//            ResultSet rs = stmt.executeQuery(sql2);
+//
+//            //STEP 5: Extract data from result set
+//            while (rs.next()) {
+//                //Retrieve by column name
+//                String first = rs.getString("first_name");
+//                String last = rs.getString("last_name");
+//
+//                //Display values
+//                System.out.print("First: " + first);
+//                System.out.println(" Last: " + last);
+//            }
+//            //STEP 6: Clean-up environment
+//            rs.close();
+//            stmt.close();
+//            conn.close();
+//        } catch (SQLException se) {
+//            //Handle errors for JDBC
+//            se.printStackTrace();
+//        } catch (Exception e) {
+//            //Handle errors for Class.forName
+//            e.printStackTrace();
+//        } finally {
+//            //finally block used to close resources
+//            try {
+//                if (stmt != null) {
+//                    stmt.close();
+//                }
+//            } catch (SQLException se2) {
+//            }// nothing we can do
+//            try {
+//                if (conn != null) {
+//                    conn.close();
+//                }
+//            } catch (SQLException se) {
+//                se.printStackTrace();
+//            }//end finally try
+//        }//end try
+//        System.out.println("Goodbye!");
+//    }//end main
+//}
 
 //public class ObjectFactory_tutorial {
 //    private SimpleMySQL mysql;
