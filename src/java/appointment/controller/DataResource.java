@@ -5,6 +5,8 @@ package appointment.controller;
 
 import appointment.businessobject.customer.Customer;
 import appointment.data.ObjectFactory;
+import java.util.ArrayList;
+import java.util.List;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,5 +28,12 @@ public class DataResource {
         return theCustomer;
     }
     
+    @RequestMapping(value = "/customers", method = RequestMethod.GET, produces="application/json")
+    public ArrayList<Customer> getCustomers() {
+        ObjectFactory dataObjectFactory = new ObjectFactory();
+        ArrayList<Customer> theCustomers = (ArrayList<Customer>) dataObjectFactory.getAllCustomers();
+        
+        return theCustomers;
+    }
 
 }
