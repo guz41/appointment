@@ -5,31 +5,32 @@
  */
 package appointment.businessobject.customer;
 
-
-
-
-
 /**
  *
  * @author Gus
  */
-
 /**
- * Make this data object self describing, including mapping to DB and ability to list all fields (inc, characteristics)
- * Create an interface called self-describing base object, has methods that detail mapping to DB and complete char lists
- * Create an implementation of interface that extends base objects (Customer Object), keep seperate to allow object searliasiatiion?? May not matter because mthods are static.
+ * Make this data object self describing, including mapping to DB and ability to
+ * list all fields (inc, characteristics) Create an interface called
+ * self-describing base object, has methods that detail mapping to DB and
+ * complete char lists Create an implementation of interface that extends base
+ * objects (Customer Object), keep separate to allow object searliasiatiion??
+ * May not matter because methods are static.
+ *
  * @author Marrows
  */
-public class Customer  {
-     private String firstName;
+public class Customer {
+
+    private String firstName;
     private String lastName;
     private long ID;
-    
-    public Customer (String FirstName,String LastName,long iD) {
+
+    public Customer(String FirstName, String LastName, long ID) {
         this.firstName = FirstName;
         this.lastName = LastName;
-        this.ID = iD;
+        this.ID = ID;
     }
+
     /**
      * @return the firstName
      */
@@ -64,9 +65,8 @@ public class Customer  {
     public long getID() {
         return ID;
     }
-    
 
-    public void setID(long iD) {
-        this.ID = iD;
+    public void setID(long ID) {
+        this.ID = ID;
     }
 }
