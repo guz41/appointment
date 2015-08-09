@@ -8,8 +8,6 @@ package appointment.data;
 import appointment.businessobject.customer.Customer;
 import java.util.ArrayList;
 import java.util.List;
-import simplemysql.SimpleMySQL;
-import simplemysql.SimpleMySQLResult;
 import java.sql.*;
 
 
@@ -34,10 +32,7 @@ public class ObjectFactory_tutorial {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
-
             stmt = conn.createStatement();
-
-
             String first_name = cust.getFirstName();
             String last_name = cust.getLastName();
 
@@ -49,7 +44,8 @@ public class ObjectFactory_tutorial {
             preparedStatement.executeUpdate();
             
             String selectStatement;
-            selectStatement = "SELECT * FROM customer";
+            selectStatement = "SELECT * FROM customer WHERE first_name = '" + first_name + "' AND last_name = '" + last_name + "'";
+            System.out.println(selectStatement);
             ResultSet rs = stmt.executeQuery(selectStatement);
 
             // Extract data from result set
@@ -57,10 +53,10 @@ public class ObjectFactory_tutorial {
                 //Retrieve by column name
                 String first = rs.getString("first_name");
                 String last = rs.getString("last_name");
+                Long id = rs.getLong("cust_id");
 
-                returnCust = new Customer(first, last, (long) 1);
-                return returnCust;
-                
+                returnCust = new Customer(first, last, id);
+                return returnCust;                
             }
             // Clean-up environment
             rs.close();
@@ -84,25 +80,128 @@ public class ObjectFactory_tutorial {
                 if (conn != null) {
                     conn.close();
                 }
-            } catch (SQLException se) {
-                  
-
+            } catch (SQLException se) { 
         }
+    }
+        return null;
+}
+    
+     public Customer getCustomer(Customer cust) {
+        Connection conn = null;
+        Statement stmt = null;
+        Customer returnCust = null;
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            stmt = conn.createStatement();
+            String first_name = cust.getFirstName();
+            String last_name = cust.getLastName();
+          
+            String selectStatement;
+            selectStatement = "SELECT * FROM customer WHERE first_name = '" + first_name + "' AND last_name = '" + last_name + "'";
+            ResultSet rs = stmt.executeQuery(selectStatement);
 
+            // Extract data from result set
+            while (rs.next()) {
+                //Retrieve by column name
+                String first = rs.getString("first_name");
+                String last = rs.getString("last_name");
+                Long id = rs.getLong("cust_id");
 
+                returnCust = new Customer(first, last, id);
+                return returnCust;                
+            }
+            // Clean-up environment
+            rs.close();
+            stmt.close();
+            conn.close();
+        } catch (SQLException se) {
+            //Handle errors for JDBC
+
+        } catch (ClassNotFoundException e) {
+            //Handle errors for Class.forName
+
+        } finally {
+            //finally block used to close resources
+            try {
+                if (stmt != null) {
+                    stmt.close();
+                }
+            } catch (SQLException se2) {
+            }// nothing we can do
+            try {
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (SQLException se) { 
+        }
+    }
+        return null;
+}
+     
+      public List<Customer> getAllCustomers() {
+        Connection conn = null;
+        Statement stmt = null;
+        Customer returnCust = null;
+        ArrayList<Customer> allCustomers = new ArrayList();
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            stmt = conn.createStatement();
+
+          
+            String selectStatement;
+            selectStatement = "SELECT * FROM customer";
+            ResultSet rs = stmt.executeQuery(selectStatement);
+
+            // Extract data from result set
+            while (rs.next()) {
+                //Retrieve by column name
+                String first = rs.getString("first_name");
+                String last = rs.getString("last_name");
+                Long id = rs.getLong("cust_id");
+                allCustomers.add(new Customer(first, last, id));                             
+            }
+               
+            // Clean-up environment
+            rs.close();
+            stmt.close();
+            conn.close();
+            return allCustomers;
+        } catch (SQLException se) {
+            //Handle errors for JDBC
+
+        } catch (ClassNotFoundException e) {
+            //Handle errors for Class.forName
+
+        } finally {
+            //finally block used to close resources
+            try {
+                if (stmt != null) {
+                    stmt.close();
+                }
+            } catch (SQLException se2) {
+            }// nothing we can do
+            try {
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (SQLException se) { 
+        }
     }
         return null;
 }
 
     
     public static void main(String[] args) {
-        Customer test1 = new Customer("Test1","Test2",(long) 1);
+        Customer test1 = new Customer("Test3","Test3",(long) 1);
         Customer test2;
         ObjectFactory_tutorial a = new ObjectFactory_tutorial();
-        test2 = a.setCustomer(test1);
-        System.out.println(test2.getFirstName() + " " + test2.getLastName());
-        
-        
+        //test2 = a.setCustomer(test1);
+        //test2 = a.getCustomer(test1);
+        test2 = a.getAllCustomers().get(2);
+        System.out.println(test2.getFirstName() + " " + test2.getLastName() + " " + test2.getID());
+                
     }
 }
     
