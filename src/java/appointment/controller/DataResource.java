@@ -4,6 +4,8 @@
 package appointment.controller;
 
 import appointment.businessobject.customer.Customer;
+import appointment.data.ObjectFactory;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -16,11 +18,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class DataResource {
     
-    @RequestMapping(value = "/customer.json", method = RequestMethod.GET, produces="application/json")
-    public Customer getCustomer() {
-        final Customer Jack = new Customer("Jack", "Marrows", 1);
+    @RequestMapping(value = "/customer/{CustomerID}", method = RequestMethod.GET, produces="application/json")
+    public Customer getCustomer(@PathVariable long CustomerID) {
+        ObjectFactory dataObjectFactory = new ObjectFactory();
+        final Customer theCustomer = dataObjectFactory.getCustomer(CustomerID);
 
-        return Jack;
+        return theCustomer;
     }
     
 
