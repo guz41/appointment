@@ -139,6 +139,56 @@ public class ObjectFactory {
         return null;
 }
      
+     public Customer getCustomer(Long ID) {
+        Connection conn = null;
+        Statement stmt = null;
+        Customer returnCust = null;
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            stmt = conn.createStatement();          
+            String selectStatement;
+            selectStatement = "SELECT * FROM customer WHERE cust_id = '" + ID +"'";
+            ResultSet rs = stmt.executeQuery(selectStatement);
+
+            // Extract data from result set
+            while (rs.next()) {
+                //Retrieve by column name
+                String first = rs.getString("first_name");
+                String last = rs.getString("last_name");
+                Long id = rs.getLong("cust_id");
+
+                returnCust = new Customer(first, last, id);
+                return returnCust;                
+            }
+            // Clean-up environment
+            rs.close();
+            stmt.close();
+            conn.close();
+        } catch (SQLException se) {
+            //Handle errors for JDBC
+
+        } catch (ClassNotFoundException e) {
+            //Handle errors for Class.forName
+
+        } finally {
+            //finally block used to close resources
+            try {
+                if (stmt != null) {
+                    stmt.close();
+                }
+            } catch (SQLException se2) {
+            }// nothing we can do
+            try {
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (SQLException se) { 
+        }
+    }
+        return null;
+}
+     
       public List<Customer> getAllCustomers() {
         Connection conn = null;
         Statement stmt = null;
