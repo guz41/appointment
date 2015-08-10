@@ -38,11 +38,10 @@ public class DataResource {
         return theCustomer;
     }
     
-    //The method below should be updated to PUT but can't be without effort
     @RequestMapping(value = "/customers/{CustomerID}", method = RequestMethod.DELETE, produces="application/json")
     public String deleteCustomer(@PathVariable String CustomerID) {
-        //ObjectFactory dataObjectFactory = new ObjectFactory();
-        //final Customer theCustomer = dataObjectFactory.addCustomer(customer);
+        long customerID = Long.parseLong(CustomerID);
+        //Insert delete code here
 
         return CustomerID;
     }
