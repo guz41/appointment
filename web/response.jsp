@@ -46,12 +46,18 @@
                     <th>ID</th>
                     <th>First Name</th>
                     <th>Last Name</th>
+                    <th></th>
                 </tr>
             </thead>
             <tr ng-repeat="customer in customers">
                 <td class="mdl-data-table__cell--non-numeric">{{customer.id}}</td>
                 <td>{{customer.firstName}}</td>
                 <td>{{customer.lastName}}</td>
+                <td>
+                    <button class="mdl-button mdl-js-button mdl-button--icon" ng-click="deleteCustomer(customer.id)">
+                    <i class="mdl-color-text--blue-grey-400 material-icons md-icon dp48">delete</i>
+                </button>
+                    </td>
             </tr>
         </table>
     </div>

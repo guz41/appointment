@@ -23,4 +23,25 @@ appointmentApp.controller('CustomerListCtrl', ['$scope', 'Customer', function($s
           $scope.newCustomer = {};
       });
     };
+    $scope.deleteCustomer = function(customer) {
+      $scope.showProgressBar = true;
+      
+      Customer.delete({customerId:customer},null, function(){
+          
+          var index = -1;		
+		var comArr = eval( $scope.customers );
+		for( var i = 0; i < comArr.length; i++ ) {
+			if( comArr[i].id === customer ) {
+				index = i;
+				break;
+			}
+		}
+		if( index === -1 ) {
+			alert( "Something gone wrong" );
+		}
+		$scope.customers.splice( index, 1 );	
+          $scope.showProgressBar = false;
+      });
+    };
+    
 }]);

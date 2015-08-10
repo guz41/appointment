@@ -38,6 +38,15 @@ public class DataResource {
         return theCustomer;
     }
     
+    //The method below should be updated to PUT but can't be without effort
+    @RequestMapping(value = "/customers/{CustomerID}", method = RequestMethod.DELETE, produces="application/json")
+    public String deleteCustomer(@PathVariable String CustomerID) {
+        //ObjectFactory dataObjectFactory = new ObjectFactory();
+        //final Customer theCustomer = dataObjectFactory.addCustomer(customer);
+
+        return CustomerID;
+    }
+    
     @RequestMapping(value = "/customers", method = RequestMethod.GET, produces="application/json")
     public ArrayList<Customer> readCustomers() {
         ObjectFactory dataObjectFactory = new ObjectFactory();
