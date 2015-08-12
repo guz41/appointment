@@ -186,8 +186,8 @@ public class ObjectFactory {
         }
         return null;
     }
-    
-        public void deleteCustomer(Long ID) {
+
+    public void deleteCustomer(Long ID) {
         Connection conn = null;
         Statement stmt = null;
         Customer returnCust = null;
@@ -197,8 +197,7 @@ public class ObjectFactory {
             stmt = conn.createStatement();
             String selectStatement;
             selectStatement = "Delete * FROM customer WHERE cust_id = '" + ID + "'";
-            
-            
+
             stmt.close();
             conn.close();
         } catch (SQLException se) {
@@ -222,7 +221,7 @@ public class ObjectFactory {
             } catch (SQLException se) {
             }
         }
-        
+
     }
 
     public List<Customer> getAllCustomers() {

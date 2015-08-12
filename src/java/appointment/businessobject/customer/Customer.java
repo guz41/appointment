@@ -19,15 +19,26 @@ package appointment.businessobject.customer;
  *
  * @author Marrows
  */
+
+import javax.persistence.*;
+
+@Entity
+@Table(name="customer")
 public class Customer {
 
+    
+    @Column(name = "first_name")
     private String firstName;
+     @Column(name = "last_name")
     private String lastName;
+    @Id @GeneratedValue
+    @Column(name = "cust_id")
     private long ID;
     
     public Customer(){
         
     }
+    
     public Customer(String FirstName, String LastName, long ID) {
         this.firstName = FirstName;
         this.lastName = LastName;
@@ -65,6 +76,7 @@ public class Customer {
     /**
      * @return the ID
      */
+
     public long getID() {
         return ID;
     }

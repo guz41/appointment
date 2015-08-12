@@ -41,7 +41,7 @@ public class DataResource {
     @RequestMapping(value = "/customers/{CustomerID}", method = RequestMethod.DELETE, produces="application/json")
     public String deleteCustomer(@PathVariable String CustomerID) {
         long customerID = Long.parseLong(CustomerID);
-        //Insert delete code here
+        new ObjectFactory().deleteCustomer(customerID);
 
         return CustomerID;
     }
