@@ -9,6 +9,7 @@ var appointmentApp = angular.module('appointmentApp', ['appointmentServices']);
 
 appointmentApp.controller('CustomerListCtrl', ['$scope', 'Customer', function($scope, Customer) {
   //$scope.customers = Customer.query();
+  //componentHandler.upgradeElement(button); is required to re-render material design
   $scope.showProgressBar = true;
   $scope.customers = Customer.query({}, function(){
       $scope.showProgressBar = false;
@@ -18,9 +19,21 @@ appointmentApp.controller('CustomerListCtrl', ['$scope', 'Customer', function($s
       var newCustomer = $scope.newCustomer;
       
       Customer.save({},newCustomer, function(returnedCustomer){
-          $scope.customers.push(returnedCustomer);
+          
+          // Loop though customers to determine if new
+          var index = -1;		
+		var comArr = eval( $scope.customers );
+		for( var i = 0; i < comArr.length; i++ ) {
+			if( comArr[i].id === returnedCustomer.id ) {
+				index = i;
+				break;
+			}
+		}
+		if( index === -1 ) {
+			$scope.customers.push(returnedCustomer);
+		}
           $scope.showProgressBar = false;
-          $scope.newCustomer = {};
+          $scope.showPopUp = false;
       });
     };
     $scope.deleteCustomer = function(customer) {
@@ -42,6 +55,13 @@ appointmentApp.controller('CustomerListCtrl', ['$scope', 'Customer', function($s
 		$scope.customers.splice( index, 1 );	
           $scope.showProgressBar = false;
       });
+    };
+    $scope.maintainCustomer = function(customer) {
+        $scope.newCustomer = customer;
+        $scope.showPopUp = true;  
+    };
+    $scope.maintainNewCustomer = function() {
+        $scope.maintainCustomer({}); 
     };
     
 }]);
