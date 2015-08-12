@@ -10,6 +10,14 @@ and open the template in the editor.
 
 table {
     width: 100%;
+
+}
+
+.main-content {
+    margin-top: 10px;
+    margin-right: auto;
+    margin-left: auto;
+    width: 80%;
 }
   
   .mdl-progress_appointment {
@@ -28,4 +36,8 @@ table {
   .customer-main-content {
       width: 96%;
       padding: 2%;
+  }
+  
+  .full-progress {
+      width: 100%;
   }
