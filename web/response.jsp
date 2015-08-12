@@ -9,13 +9,12 @@
 
 
 
-<div class="mdl-card mdl-shadow--2dp demo-card-wide" >
-    <div class="mdl-card__title">
-        <h2 class="mdl-card__title-text">Customers</h2>
-    </div>
-    <div class="mdl-card__supporting-text customer-main-content" ng-controller="CustomerListCtrl">
+<main class="mdl-layout__content  mdl-color--grey-100">
+    <div class="page-content" ng-controller="CustomerListCtrl">
+        <div id="p2" class="mdl-progress mdl-js-progress mdl-progress__indeterminate mdl-progress_appointment full-progress" ng-show="showProgressBar"></div>
+        <div class="main-content">
         <!-- MDL Progress Bar with Indeterminate Progress -->
-        <div id="p2" class="mdl-progress mdl-js-progress mdl-progress__indeterminate mdl-progress_appointment" ng-show="showProgressBar"></div>
+        
         <div class="mdl-grid">
             <div class="mdl-cell mdl-cell--5-col">
                 <div class="mdl-textfield mdl-js-textfield">
@@ -61,4 +60,5 @@
             </tr>
         </table>
     </div>
-</div>
+    </div>
+</main>

@@ -111,14 +111,14 @@
             </div>
 
 
-            <main class="mdl-layout__content mdl-color--grey-100">
+            
 
                 <% if (request.getParameter("name") != null && request.getParameter("name").equals("response")) {%>
                 <%@include file='response.jsp'%>
                 <% } else { %>
                 <%@include file='home.jsp'%>
                 <% }%>
-            </main>
+            
         </div>
         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" style="position: fixed; left: -1000px; height: -1000px;">
         <defs>

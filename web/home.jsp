@@ -4,6 +4,7 @@
     Author     : Marrows
 --%>
 <jsp:useBean id="customers1" class="appointment.data.ObjectFactory" />
+<main class="mdl-layout__content mdl-color--grey-100">
 <div class="mdl-card mdl-shadow--2dp demo-card-wide" style="margin-left: auto; margin-right: auto; margin-top: 15px;">
     <form name="form1" action="index.jsp?page=response" method="post">
         <div class="mdl-card__title">
@@ -28,3 +29,4 @@
         </div>
     </form>
 </div>
+</main>
