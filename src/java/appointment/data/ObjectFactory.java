@@ -20,7 +20,7 @@ public class ObjectFactory {
 
     private static SessionFactory factory;
 
-    ObjectFactory() {
+    public ObjectFactory() {
         try {
             factory = new Configuration().configure().
                     //addPackage("com.xyz") //add package if used.
@@ -51,13 +51,35 @@ public class ObjectFactory {
     }
     /* Method to CREATE an employee in the database */
 
-    public Long addCustomer(String fname, String lname) {
+    public Customer addCustomer(Customer cust) {
         Session session = factory.openSession();
         Transaction tx = null;
         Long customerID = null;
+        Customer customer = cust;
         try {
             tx = session.beginTransaction();
-            Customer customer = new Customer();
+      
+            customerID = (Long) session.save(customer);
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return customer;
+    }
+    
+        public Customer addCustomer(String fname, String lname) {
+        Session session = factory.openSession();
+        Transaction tx = null;
+        Long customerID = null;
+        Customer customer = new Customer();
+        try {
+            tx = session.beginTransaction();
+            
             customer.setFirstName(fname);
             customer.setLastName(lname);
 
@@ -71,7 +93,7 @@ public class ObjectFactory {
         } finally {
             session.close();
         }
-        return customerID;
+        return customer;
     }
     /* Method to  READ all the employees */
 
@@ -108,6 +130,30 @@ public class ObjectFactory {
             for (Iterator iterator = customers.iterator(); iterator.hasNext();) {
                 Customer customer = (Customer) iterator.next();
                 cust.add(customer);            }
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return cust;
+        //return null;
+    }
+        
+       public Customer getCustomer(Long id) {
+        Session session = factory.openSession();
+        Transaction tx = null;
+        Customer cust = new Customer();
+        try {
+            tx = session.beginTransaction();
+ 
+            List customers = session.createQuery("FROM Customer WHERE cust_id = " + id).list();
+            for (Iterator iterator = customers.iterator(); iterator.hasNext();) {
+                cust = (Customer) iterator.next();
+                           }
             tx.commit();
         } catch (HibernateException e) {
             if (tx != null) {

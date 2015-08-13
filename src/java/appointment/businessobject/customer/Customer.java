@@ -42,7 +42,13 @@ public class Customer {
     public Customer(String FirstName, String LastName, long ID) {
         this.firstName = FirstName;
         this.lastName = LastName;
-        this.ID = ID;
+
+    }
+    
+    public Customer(String FirstName, String LastName) {
+        this.firstName = FirstName;
+        this.lastName = LastName;
+
     }
 
     /**
