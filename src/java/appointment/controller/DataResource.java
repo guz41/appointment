@@ -31,9 +31,15 @@ public class DataResource {
     
     //The method below should be updated to PUT but can't be without effort
     @RequestMapping(value = "/customers", method = RequestMethod.POST, produces="application/json", consumes="application/json")
-    public Customer addCustomer(@RequestBody Customer customer) {
+    public Customer maintainCustomer(@RequestBody Customer customer) {
         ObjectFactory dataObjectFactory = new ObjectFactory();
-        final Customer theCustomer = dataObjectFactory.addCustomer(customer);
+        final Customer theCustomer;
+        if (customer.getID() == 0L) {
+            theCustomer = dataObjectFactory.addCustomer(customer);
+        } else {
+           // theCustomer = dataObjectFactory.updateCustomer(customer);
+            theCustomer = customer;
+        }
 
         return theCustomer;
     }
