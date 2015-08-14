@@ -71,6 +71,26 @@ public class ObjectFactory {
         }
         return customer;
     }
+    public Object addDataResource(Object resource) {
+        Session session = factory.openSession();
+        Transaction tx = null;
+        Long resourceID = null;
+        Object customer = resource;
+        try {
+            tx = session.beginTransaction();
+      
+            resourceID = (Long) session.save(resource);
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return resource;
+    }
     
         public Customer addCustomer(String fname, String lname) {
         Session session = factory.openSession();

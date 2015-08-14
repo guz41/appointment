@@ -35,7 +35,7 @@ public class DataResource {
         ObjectFactory dataObjectFactory = new ObjectFactory();
         final Customer theCustomer;
         if (customer.getID() == 0L) {
-            theCustomer = dataObjectFactory.addCustomer(customer);
+            theCustomer = (Customer) dataObjectFactory.addDataResource(customer);
         } else {
            dataObjectFactory.updateCustomer(customer.getID(), customer.getFirstName(), customer.getLastName());
             theCustomer = customer;
