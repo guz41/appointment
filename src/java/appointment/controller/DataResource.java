@@ -37,7 +37,7 @@ public class DataResource {
         if (customer.getID() == 0L) {
             theCustomer = dataObjectFactory.addCustomer(customer);
         } else {
-           // theCustomer = dataObjectFactory.updateCustomer(customer);
+           dataObjectFactory.updateCustomer(customer.getID(), customer.getFirstName(), customer.getLastName());
             theCustomer = customer;
         }
 

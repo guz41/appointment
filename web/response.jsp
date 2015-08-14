@@ -67,7 +67,7 @@
                 <td>{{customer.lastName}}</td>
                 <td>
                     <button class="mdl-button mdl-js-button mdl-button--icon" ng-click="maintainCustomer(customer)">
-                    <i class="mdl-color-text--blue-grey-400 material-icons md-icon dp48">save</i>
+                    <i class="mdl-color-text--blue-grey-400 material-icons md-icon dp48">edit</i>
                 </button>
                     </td>
                 <td>
