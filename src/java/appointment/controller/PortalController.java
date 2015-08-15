@@ -28,12 +28,20 @@ public class PortalController {
     public ModelAndView retrieveHome(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
             
-        ModelAndView model = new ModelAndView("index.jsp");
+        ModelAndView model = new ModelAndView("/jsp/home.jsp");
         model.addObject("acustomer", new Customer("Jack", "Marrows", 1));
         
         return model;
     }
     
-    
+        @RequestMapping(value={"/customer.html"})
+    public ModelAndView retrieveCustomer(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+            
+        ModelAndView model = new ModelAndView("/jsp/customer.jsp");
+        model.addObject("acustomer", new Customer("Jack", "Marrows", 1));
+        
+        return model;
+    }
 
 }

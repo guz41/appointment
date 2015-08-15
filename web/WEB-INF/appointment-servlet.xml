@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:mvc="http://www.springframework.org/schema/mvc" 
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
         http://www.springframework.org/schema/beans     
         http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
         http://www.springframework.org/schema/context 
@@ -12,12 +12,28 @@
         http://www.springframework.org/schema/mvc
         http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
 
-  <!-- the application context definition for the springapp DispatcherServlet -->
+    <!-- the application context definition for the springapp DispatcherServlet -->
 
-  	<context:component-scan base-package="appointment.controller" />
-        <mvc:annotation-driven />
-         <mvc:resources mapping="/css/**" location="/css/" />
-         <mvc:resources mapping="/js/**" location="/js/" />
-         <mvc:resources mapping="/images/**" location="/images/" />
+    <context:component-scan base-package="appointment.controller" />
+    <mvc:annotation-driven />
+    <mvc:resources mapping="/css/**" location="/css/" />
+    <mvc:resources mapping="/js/**" location="/js/" />
+    <mvc:resources mapping="/images/**" location="/images/" />
 
+    
+    
+  
+ 
+    <!-- Helper class to configure Tiles 3.x for the Spring Framework -->
+    <!-- See http://static.springsource.org/spring/docs/3.0.x/javadoc-api/org/springframework/web/servlet/view/tiles2/TilesConfigurer.html -->
+    <!-- The actual tiles templates are in the tiles-definitions.xml  -->
+    <bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+        <property name="definitions">
+            <list>
+                <value>/WEB-INF/tile-defs/templates.xml</value>
+                <value>/WEB-INF/tile-defs/definitions.xml</value>
+            </list>
+        </property>
+    </bean>
+    
 </beans>
