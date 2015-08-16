@@ -28,7 +28,7 @@ public class PortalController {
     public ModelAndView retrieveHome(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
             
-        ModelAndView model = new ModelAndView("/jsp/home.jsp");
+        ModelAndView model = new ModelAndView("homePage");
         model.addObject("acustomer", new Customer("Jack", "Marrows", 1));
         
         return model;
@@ -38,7 +38,7 @@ public class PortalController {
     public ModelAndView retrieveCustomer(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
             
-        ModelAndView model = new ModelAndView("/jsp/customer.jsp");
+        ModelAndView model = new ModelAndView("maintainCustomer");
         model.addObject("acustomer", new Customer("Jack", "Marrows", 1));
         
         return model;

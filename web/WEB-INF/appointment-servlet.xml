@@ -27,6 +27,16 @@
     <!-- Helper class to configure Tiles 3.x for the Spring Framework -->
     <!-- See http://static.springsource.org/spring/docs/3.0.x/javadoc-api/org/springframework/web/servlet/view/tiles2/TilesConfigurer.html -->
     <!-- The actual tiles templates are in the tiles-definitions.xml  -->
+    <!--
+        Tiles is used as the templating tool.
+        template.jsp is the core template for the website.
+        tile-defs folder contains the configuration that makes up the websites, views can be resolved using definition names.
+        all of the jsps are in the jsp folder, these JSPs are referred to by the page definitions (in tile-defs folder)
+    -->
+    <bean id="tilesviewResolver" class="org.springframework.web.servlet.view.tiles3.TilesViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView"/>      
+        <property name="order" value="1"/>
+    </bean>
     <bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
         <property name="definitions">
             <list>
