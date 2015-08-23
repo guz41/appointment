@@ -5,7 +5,7 @@
  */
 package appointment.data;
 
-import appointment.businessobject.customer.Customer;
+import appointment.businessobject.Customer;
 import java.util.ArrayList;
 import java.util.List;
 import java.sql.*;

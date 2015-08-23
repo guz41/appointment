@@ -3,11 +3,15 @@
  */
 package appointment.controller;
 
-import appointment.businessobject.customer.Customer;
+import appointment.businessobject.BusinessObjectField;
+import appointment.businessobject.BusinessObjectField.FieldType;
+import appointment.businessobject.Customer;
 import java.io.IOException;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.xml.bind.JAXBException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -40,6 +44,20 @@ public class PortalController {
             
         ModelAndView model = new ModelAndView("maintainCustomer");
         model.addObject("acustomer", new Customer("Jack", "Marrows", 1));
+        
+        model.addObject("baseResource", "customer");
+        
+        ArrayList<BusinessObjectField> fields = new ArrayList();
+        fields.add(new BusinessObjectField(0, "customer", "id", "ID", FieldType.BASE,"",true,true));
+        fields.add(new BusinessObjectField(1, "customer", "firstName", "First Name", FieldType.BASE,"",true,false));
+        fields.add(new BusinessObjectField(2, "customer", "lastName", "Last Name", FieldType.BASE,"",true,false));
+        
+        model.addObject("baseResourceFields", fields);
+        
+        //Model requires a description of the object to be modified
+        //Objects are broken into core fields and characteristics
+        //These are all pulled from the display configuration object in the DB
+
         
         return model;
     }

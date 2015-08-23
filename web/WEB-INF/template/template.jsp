@@ -40,8 +40,8 @@
         
         <script src="js/angular.js"></script>
         <script src="js/angular-resource.js"></script>
-        <script src="js/services.js"></script>
-        <script src="js/controllers.js"></script>
+     <!--   <script src="js/services.js"></script>
+        <script src="js/controllers.js"></script> -->
         <tiles:insertAttribute name="otherscripts" />
         <link href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en" rel="stylesheet">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">

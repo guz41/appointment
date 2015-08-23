@@ -5,7 +5,7 @@
  */
 package appointment.bean;
 
-import appointment.businessobject.customer.Customer;
+import appointment.businessobject.Customer;
 import appointment.data.ObjectFactory;
 
 /**

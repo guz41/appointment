@@ -3,7 +3,7 @@
  */
 package appointment.controller;
 
-import appointment.businessobject.customer.Customer;
+import appointment.businessobject.Customer;
 import appointment.data.ObjectFactory;
 import java.util.ArrayList;
 import java.util.List;
