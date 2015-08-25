@@ -20,15 +20,25 @@ package appointment.businessobject;
  * @author Marrows
  */
 
+import java.util.Collection;
 import javax.persistence.*;
 
 @Entity
 @Table(name="customer")
 public class Customer {
 
+//    @OneToMany(mappedBy = "customerId")
+//    private Collection<CustomerChar> customerCharacteristics;
     
     @Column(name = "first_name")
     private String firstName;
+
+//    public Customer(Collection<CustomerChar> customerCharacteristics, String firstName, String lastName, long ID) {
+//        this.customerCharacteristics = customerCharacteristics;
+//        this.firstName = firstName;
+//        this.lastName = lastName;
+//        this.ID = ID;
+//    }
      @Column(name = "last_name")
     private String lastName;
     @Id @GeneratedValue
@@ -90,4 +100,18 @@ public class Customer {
     public void setID(long ID) {
         this.ID = ID;
     }
+
+//    /**
+//     * @return the customerCharacteristics
+//     */
+//    public Collection<CustomerChar> getCustomerCharacteristics() {
+//        return customerCharacteristics;
+//    }
+//
+//    /**
+//     * @param customerCharacteristics the customerCharacteristics to set
+//     */
+//    public void setCustomerCharacteristics(Collection<CustomerChar> customerCharacteristics) {
+//        this.customerCharacteristics = customerCharacteristics;
+//    }
 }

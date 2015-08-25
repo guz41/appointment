@@ -6,9 +6,10 @@
 package appointment.data;
 
 import appointment.businessobject.Customer;
+import appointment.businessobject.CustomerChar;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import java.sql.*;
 import java.util.Iterator;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -22,9 +23,7 @@ public class ObjectFactory {
 
     public ObjectFactory() {
         try {
-            factory = new Configuration().configure().
-                    //addPackage("com.xyz") //add package if used.
-                    addAnnotatedClass(Customer.class).buildSessionFactory();
+            factory = new Configuration().configure().buildSessionFactory();
         } catch (Throwable ex) {
             System.err.println("Failed to create sessionFactory object." + ex);
             throw new ExceptionInInitializerError(ex);
@@ -92,6 +91,13 @@ public class ObjectFactory {
         return resource;
     }
     
+        public Object getDataResource(Class resourceClass, long id) {
+        Session session = factory.openSession();
+        Object dataObject = session.get(resourceClass, new Long(id));
+        return dataObject;
+    }
+        
+        
         public Customer addCustomer(String fname, String lname) {
         Session session = factory.openSession();
         Transaction tx = null;

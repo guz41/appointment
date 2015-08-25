@@ -24,7 +24,7 @@ public class DataResource {
     @RequestMapping(value = "/customers/{CustomerID}", method = RequestMethod.GET, produces="application/json")
     public Customer readCustomer(@PathVariable long CustomerID) {
         ObjectFactory dataObjectFactory = new ObjectFactory();
-        final Customer theCustomer = dataObjectFactory.getCustomer(CustomerID);
+        final Customer theCustomer = (Customer) dataObjectFactory.getDataResource(Customer.class, CustomerID);
 
         return theCustomer;
     }

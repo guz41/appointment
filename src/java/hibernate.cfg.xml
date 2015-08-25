@@ -21,6 +21,7 @@
    <property name="hibernate.connection.password">
       sysuser00
    </property>
-
+   <mapping class="appointment.businessobject.Customer" />
+    <mapping class="appointment.businessobject.CustomerChar" />
 </session-factory>
 </hibernate-configuration>
