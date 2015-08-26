@@ -90,14 +90,28 @@ public class ObjectFactory {
         }
         return resource;
     }
-    
+     public Object updateDataResource(Object resource) {
+        Session session = factory.openSession();
+        Transaction tx = session.beginTransaction();
+        Object mergedOne = session.merge(resource);
+        session.saveOrUpdate(mergedOne);
+            tx.commit();
+        
+        return resource;
+    }
+     
         public Object getDataResource(Class resourceClass, long id) {
         Session session = factory.openSession();
         Object dataObject = session.get(resourceClass, new Long(id));
         return dataObject;
     }
         
-        
+    public List<Object> getDataResourceList(Class resourceClass) {
+        Session session = factory.openSession();
+        List<Object> dataObjects = session.createCriteria(resourceClass).list();
+        return dataObjects;
+    }
+    
         public Customer addCustomer(String fname, String lname) {
         Session session = factory.openSession();
         Transaction tx = null;
@@ -148,6 +162,7 @@ public class ObjectFactory {
     
         public ArrayList<Customer> getAllCustomers() {
         Session session = factory.openSession();
+       
         Transaction tx = null;
         ArrayList<Customer> cust = new ArrayList();
         try {

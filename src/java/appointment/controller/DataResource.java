@@ -37,8 +37,7 @@ public class DataResource {
         if (customer.getID() == 0L) {
             theCustomer = (Customer) dataObjectFactory.addDataResource(customer);
         } else {
-           dataObjectFactory.updateCustomer(customer.getID(), customer.getFirstName(), customer.getLastName());
-            theCustomer = customer;
+           theCustomer = (Customer) dataObjectFactory.updateDataResource(customer);
         }
 
         return theCustomer;
@@ -53,9 +52,9 @@ public class DataResource {
     }
     
     @RequestMapping(value = "/customers", method = RequestMethod.GET, produces="application/json")
-    public ArrayList<Customer> readCustomers() {
+    public List<Customer> readCustomers() {
         ObjectFactory dataObjectFactory = new ObjectFactory();
-        ArrayList<Customer> theCustomers = (ArrayList<Customer>) dataObjectFactory.getAllCustomers();
+        List<Customer> theCustomers = (List<Customer>)(Object) dataObjectFactory.getDataResourceList(Customer.class);
         
         return theCustomers;
     }
