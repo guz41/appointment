@@ -34,18 +34,15 @@ public class DataResource {
     public Customer maintainCustomer(@RequestBody Customer customer) {
         ObjectFactory dataObjectFactory = new ObjectFactory();
         final Customer theCustomer;
-        if (customer.getID() == 0L) {
-            theCustomer = (Customer) dataObjectFactory.addDataResource(customer);
-        } else {
+            customer.setCharPerson();
            theCustomer = (Customer) dataObjectFactory.updateDataResource(customer);
-        }
 
         return theCustomer;
     }
     
     @RequestMapping(value = "/customers/{CustomerID}", method = RequestMethod.DELETE, produces="application/json")
     public String deleteCustomer(@PathVariable String CustomerID) {
-        long customerID = Long.parseLong(CustomerID);
+        Long customerID = Long.parseLong(CustomerID);
         new ObjectFactory().deleteCustomer(customerID);
 
         return CustomerID;

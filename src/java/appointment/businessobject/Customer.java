@@ -27,7 +27,7 @@ import javax.persistence.*;
 @Table(name="customer")
 public class Customer {
 
-    @OneToMany(mappedBy = "customer")
+    @OneToMany(mappedBy = "customer", cascade = {CascadeType.ALL})
     private Collection<CustomerChar> customerCharacteristics;
     
     @Column(name = "first_name")
@@ -43,13 +43,13 @@ public class Customer {
     private String lastName;
     @Id @GeneratedValue
     @Column(name = "cust_id")
-    private long ID;
+    private Long ID;
     
     public Customer(){
         
     }
     
-    public Customer(String FirstName, String LastName, long ID) {
+    public Customer(String FirstName, String LastName, Long ID) {
         this.firstName = FirstName;
         this.lastName = LastName;
 
@@ -93,11 +93,11 @@ public class Customer {
      * @return the ID
      */
 
-    public long getID() {
+    public Long getID() {
         return ID;
     }
 
-    public void setID(long ID) {
+    public void setID(Long ID) {
         this.ID = ID;
     }
 
@@ -107,7 +107,14 @@ public class Customer {
     public Collection<CustomerChar> getCustomerCharacteristics() {
         return customerCharacteristics;
     }
-
+    
+    public void setCharPerson(){
+        if (this.customerCharacteristics != null) {
+            for (CustomerChar Char:this.customerCharacteristics) {
+                Char.setCustomer(this);
+            }
+        }
+    }
     /**
      * @param customerCharacteristics the customerCharacteristics to set
      */

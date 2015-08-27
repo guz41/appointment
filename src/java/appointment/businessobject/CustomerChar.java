@@ -26,7 +26,7 @@ public class CustomerChar {
     private String charValue;
     @Id @GeneratedValue
     @Column(name = "char_id")
-    private long ID;
+    private Long ID;
     @ManyToOne
     @JoinColumn(name="cust_id")
     private Customer customer;
@@ -34,7 +34,7 @@ public class CustomerChar {
     public CustomerChar() {
     }
 
-    public CustomerChar(String charType, String charValue, long ID, Customer customer) {
+    public CustomerChar(String charType, String charValue, Long ID, Customer customer) {
         this.charType = charType;
         this.charValue = charValue;
         this.ID = ID;
@@ -72,14 +72,14 @@ public class CustomerChar {
     /**
      * @return the ID
      */
-    public long getID() {
+    public Long getID() {
         return ID;
     }
 
     /**
      * @param ID the ID to set
      */
-    public void setID(long ID) {
+    public void setID(Long ID) {
         this.ID = ID;
     }
 

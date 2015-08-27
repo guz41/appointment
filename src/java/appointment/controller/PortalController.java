@@ -33,7 +33,7 @@ public class PortalController {
             throws ServletException, IOException {
             
         ModelAndView model = new ModelAndView("homePage");
-        model.addObject("acustomer", new Customer("Jack", "Marrows", 1));
+        model.addObject("acustomer", new Customer("Jack", "Marrows", Long.parseLong("1")));
         
         return model;
     }
@@ -43,7 +43,7 @@ public class PortalController {
             throws ServletException, IOException {
             
         ModelAndView model = new ModelAndView("maintainCustomer");
-        model.addObject("acustomer", new Customer("Jack", "Marrows", 1));
+        model.addObject("acustomer", new Customer("Jack", "Marrows", Long.parseLong("1")));
         
         model.addObject("baseResource", "customer");
         
