@@ -68,5 +68,6 @@ table {
       margin-right: 10%; 
       margin-top: 10vh; 
       margin-bottom: 10vh;
+      overflow-y: auto;
   }
 }

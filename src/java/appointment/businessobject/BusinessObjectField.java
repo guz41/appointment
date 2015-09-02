@@ -15,8 +15,6 @@ public class BusinessObjectField {
     
     //This is the parent business object as expressed in JS
     private String parentObject;
-
-
     
     //This is the name that the object would be referred to in javascript
     private String fieldName;

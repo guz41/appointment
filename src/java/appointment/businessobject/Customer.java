@@ -22,12 +22,18 @@ package appointment.businessobject;
 
 import java.util.Collection;
 import javax.persistence.*;
+import org.hibernate.annotations.Cascade;
 
 @Entity
 @Table(name="customer")
 public class Customer {
 
     @OneToMany(mappedBy = "customer", cascade = {CascadeType.ALL})
+    @Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE,
+                org.hibernate.annotations.CascadeType.DELETE,
+                org.hibernate.annotations.CascadeType.MERGE,
+                org.hibernate.annotations.CascadeType.PERSIST,
+                org.hibernate.annotations.CascadeType.DELETE_ORPHAN})
     private Collection<CustomerChar> customerCharacteristics;
     
     @Column(name = "first_name")

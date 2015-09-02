@@ -36,7 +36,7 @@ appointmentApp.controller('DataResourceListCtrl', ['$scope', 'DataResource', fun
   $scope.addDataResource = function() {
       $scope.showProgressBar = true;
       var newDataResource = $scope.newDataResource;
-      
+      $scope.removeUnusedDataResourceChar(newDataResource);
       DataResource.save({},newDataResource, function(returnedDataResource){
           
           // Loop though resources to determine if new
@@ -75,6 +75,7 @@ appointmentApp.controller('DataResourceListCtrl', ['$scope', 'DataResource', fun
           $scope.showProgressBar = false;
       });
     };
+ 
     $scope.maintainDataResource = function(${baseResource}) {
         $scope.newDataResource = ${baseResource};
         $scope.showPopUp = true;  
@@ -82,6 +83,23 @@ appointmentApp.controller('DataResourceListCtrl', ['$scope', 'DataResource', fun
     $scope.maintainNewDataResource = function() {
         $scope.maintainDataResource({}); 
     };
-    
+    $scope.removeResourceChar = function(item) { 
+        var index = $scope.newDataResource.${baseResource}Characteristics.indexOf(item);
+        $scope.newDataResource.${baseResource}Characteristics.splice(index, 1);     
+    }
+    $scope.addDataResourceChar = function() {  
+        $scope.newDataResource.${baseResource}Characteristics.push({});
+      }   
+    //Remove any chars that have been added but will not be used
+    $scope.removeUnusedDataResourceChar = function(dataResource) { 
+        var characteristics = dataResource.${baseResource}Characteristics;
+        var arrayLength = characteristics.length;
+        for (var i = 0; i < arrayLength; i++) {
+            if (!characteristics[i].hasOwnProperty('charType')) {
+                $scope.removeResourceChar(characteristics[i]);
+        }
+       
+      }
+  }
 }]);
 </script>

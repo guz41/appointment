@@ -51,9 +51,11 @@ public class PortalController {
         fields.add(new BusinessObjectField(0, "customer", "id", "ID", FieldType.BASE,"",true,true));
         fields.add(new BusinessObjectField(1, "customer", "firstName", "First Name", FieldType.BASE,"",true,false));
         fields.add(new BusinessObjectField(2, "customer", "lastName", "Last Name", FieldType.BASE,"",true,false));
-        
+        ArrayList<BusinessObjectField> charFields = new ArrayList();
+        charFields.add(new BusinessObjectField(3, "customer_char", "phone", "Phone Number", FieldType.CHAR,"",true,false));
+        charFields.add(new BusinessObjectField(3, "customer_char", "suburb", "Suburb", FieldType.CHAR,"",true,false));
         model.addObject("baseResourceFields", fields);
-        
+        model.addObject("charResourceFields", charFields);
         //Model requires a description of the object to be modified
         //Objects are broken into core fields and characteristics
         //These are all pulled from the display configuration object in the DB
