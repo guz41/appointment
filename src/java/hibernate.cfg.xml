@@ -22,6 +22,7 @@
       sysuser00
    </property>
    <mapping class="appointment.businessobject.Customer" />
-    <mapping class="appointment.businessobject.CustomerChar" />
+   <mapping class="appointment.businessobject.CustomerChar" />
+   <mapping class="appointment.businessobject.BusinessObjectField" />
 </session-factory>
 </hibernate-configuration>

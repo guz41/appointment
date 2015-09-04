@@ -11,11 +11,14 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Iterator;
+import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.criterion.Expression;
+import org.hibernate.criterion.Restrictions;
 
 public class ObjectFactory {
 
@@ -110,6 +113,20 @@ public class ObjectFactory {
         Session session = factory.openSession();
         List<Object> dataObjects = session.createCriteria(resourceClass).list();
         return dataObjects;
+    }
+    
+    public List<Object> getDataResourceList(Class resourceClass, String column, String value) {
+        Session session = factory.openSession();
+        Criteria criteria = session.createCriteria(resourceClass);
+        criteria.add(Expression.eq(column, value));
+        List<Object> dataObjects = criteria.list();
+        return dataObjects;
+    }
+    
+    public void deleteResource (Object cannedObject) {
+        Session session = factory.openSession();
+        session.flush() ;
+
     }
     
         public Customer addCustomer(String fname, String lname) {

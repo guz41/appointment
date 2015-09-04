@@ -24,7 +24,7 @@
                     <c:if test="${!field.isReadOnly()}">
                         <tr>
                             <td>
-                            <label  for="${field.getFieldName()}">${field.getFeildLabel()}</label>
+                            <label  for="${field.getFieldName()}">${field.getFieldLabel()}</label>
                             </td>
                             <td colspan="2">
                             <div class="mdl-textfield mdl-js-textfield">
@@ -41,7 +41,7 @@
                                 <select class="mdl-textfield__input" ng-model="charField.charType">
                                     <c:forEach var="field" items="${charResourceFields}" varStatus="loop">
                                     <c:if test="${true}">
-                                        <option value="${field.getFieldName()}">${field.getFeildLabel()}</option>
+                                        <option value="${field.getFieldName()}">${field.getFieldLabel()}</option>
                                     </c:if>
                                     </c:forEach>
                                 </select>
@@ -92,7 +92,7 @@
                     <tr>
                         <c:forEach var="field" items="${baseResourceFields}" varStatus="loop">
                             <c:if test="${field.isDisplayInTable()}">
-                                <th>${field.getFeildLabel()}</th>
+                                <th>${field.getFieldLabel()}</th>
                                 </c:if>
                             </c:forEach>
                         <th></th>

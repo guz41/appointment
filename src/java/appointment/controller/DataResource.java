@@ -3,6 +3,7 @@
  */
 package appointment.controller;
 
+import appointment.businessobject.BusinessObjectField;
 import appointment.businessobject.Customer;
 import appointment.data.ObjectFactory;
 import java.util.ArrayList;
@@ -55,5 +56,43 @@ public class DataResource {
         
         return theCustomers;
     }
+    
+    //Rest resources for business object field data object
+    
+    //for test only
+        @RequestMapping(value = "/businessobjectfields/{BusinessObjectFieldID}", method = RequestMethod.GET, produces="application/json")
+    public BusinessObjectField readBusinessObjectField(@PathVariable long BusinessObjectFieldID) {
+        //ObjectFactory dataObjectFactory = new ObjectFactory();
+        final BusinessObjectField theBusinessObjectField = (BusinessObjectField) new BusinessObjectField(0, "businessobjectfield", "id", "ID", BusinessObjectField.FieldType.BASE,"",true,true,"");
 
+        return theBusinessObjectField;
+    }
+    
+    //The method below should be updated to PUT but can't be without effort
+    @RequestMapping(value = "/businessobjectfields", method = RequestMethod.POST, produces="application/json", consumes="application/json")
+    public BusinessObjectField maintainBusinessObjectField(@RequestBody BusinessObjectField businessobjectfield) {
+        ObjectFactory dataObjectFactory = new ObjectFactory();
+        final BusinessObjectField theBusinessObjectField;
+           theBusinessObjectField = (BusinessObjectField) dataObjectFactory.updateDataResource(businessobjectfield);
+
+        return theBusinessObjectField;
+    }
+    
+    @RequestMapping(value = "/businessobjectfields/{BusinessObjectFieldID}", method = RequestMethod.DELETE, produces="application/json")
+    public String deleteBusinessObjectField(@PathVariable String BusinessObjectFieldID) {
+        Integer businessobjectfieldID = Integer.parseInt(BusinessObjectFieldID);
+        BusinessObjectField cannedBusinessObject = new BusinessObjectField();
+        cannedBusinessObject.setID(businessobjectfieldID);
+        new ObjectFactory().deleteResource(cannedBusinessObject);
+
+        return BusinessObjectFieldID;
+    }
+    
+    @RequestMapping(value = "/businessobjectfields", method = RequestMethod.GET, produces="application/json")
+    public List<BusinessObjectField> readBusinessObjectFields() {
+        ObjectFactory dataObjectFactory = new ObjectFactory();
+        List<BusinessObjectField> theBusinessObjectFields = (List<BusinessObjectField>)(Object) dataObjectFactory.getDataResourceList(BusinessObjectField.class);
+        
+        return theBusinessObjectFields;
+    }
 }

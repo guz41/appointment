@@ -5,40 +5,62 @@
  */
 package appointment.businessobject;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
  *
  * @author Marrows
  */
+
+@Entity
+@Table(name="business_object_field")
 public class BusinessObjectField {
     //An ID is required because this will be stored in the DB
+    @Id @GeneratedValue
+    @Column(name = "bof_id")
     private int ID;
     
     //This is the parent business object as expressed in JS
+    @Column(name = "parent_object")
     private String parentObject;
     
     //This is the name that the object would be referred to in javascript
+    @Column(name = "field_name")
     private String fieldName;
     
     //This is what would be displayed at the top of table or label next to the text box
+    @Column(name = "field_label")
     private String fieldLabel;
     
     //Field type is required to determine if the field should be stored in the char table or regular table
+    @Column(name = "field_type")
     private FieldType fieldType;
     
     //Regex expressed as a string when displaying the field
+    @Column(name = "field_validation")
     private String fieldValidation;
     
+    //Message displayed to user when the field doesn't validate
+    @Column(name = "field_validation_label")
+    private String fieldValidationLabel;
+    
     //Boolean to indicate whether the field should be displayed in the table
+    @Column(name = "display_in_table")
     private Boolean displayInTable;
     
     //Boolean to indicate whether the field should be read only
+    @Column(name = "read_only")
     private Boolean readOnly;
     
     public BusinessObjectField(){
         
     }
     
-    public BusinessObjectField(int ID, String parentObject, String fieldName, String fieldLabel, FieldType fieldType, String fieldValidation, Boolean displayInTable, Boolean readOnly) {
+    public BusinessObjectField(int ID, String parentObject, String fieldName, String fieldLabel, FieldType fieldType, String fieldValidation, Boolean displayInTable, Boolean readOnly, String fieldValidationLabel) {
         this.ID = ID;
         this.parentObject = parentObject;
         this.fieldName = fieldName;
@@ -47,6 +69,7 @@ public class BusinessObjectField {
         this.fieldValidation = fieldValidation;
         this.displayInTable = displayInTable;
         this.readOnly = readOnly;
+        this.fieldValidationLabel = fieldValidationLabel;
     }
     
     /**
@@ -97,14 +120,14 @@ public class BusinessObjectField {
     /**
      * @return the feildLabel
      */
-    public String getFeildLabel() {
+    public String getFieldLabel() {
         return fieldLabel;
     }
 
     /**
      * @param feildLabel the feildLabel to set
      */
-    public void setFeildLabel(String feildLabel) {
+    public void setFieldLabel(String feildLabel) {
         this.fieldLabel = feildLabel;
     }
 
@@ -162,6 +185,20 @@ public class BusinessObjectField {
      */
     public void setReadOnly(Boolean readOnly) {
         this.readOnly = readOnly;
+    }
+
+    /**
+     * @return the fieldValidationLabel
+     */
+    public String getFieldValidationLabel() {
+        return fieldValidationLabel;
+    }
+
+    /**
+     * @param fieldValidationLabel the fieldValidationLabel to set
+     */
+    public void setFieldValidationLabel(String fieldValidationLabel) {
+        this.fieldValidationLabel = fieldValidationLabel;
     }
             
     public enum FieldType {
