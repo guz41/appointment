@@ -44,8 +44,10 @@ public class DataResource {
     @RequestMapping(value = "/customers/{CustomerID}", method = RequestMethod.DELETE, produces="application/json")
     public String deleteCustomer(@PathVariable String CustomerID) {
         Long customerID = Long.parseLong(CustomerID);
-        new ObjectFactory().deleteCustomer(customerID);
-
+        Customer cannedCustomer = new Customer();
+        cannedCustomer.setID(customerID);
+        new ObjectFactory().deleteResource(cannedCustomer);
+        
         return CustomerID;
     }
     
@@ -58,16 +60,6 @@ public class DataResource {
     }
     
     //Rest resources for business object field data object
-    
-    //for test only
-        @RequestMapping(value = "/businessobjectfields/{BusinessObjectFieldID}", method = RequestMethod.GET, produces="application/json")
-    public BusinessObjectField readBusinessObjectField(@PathVariable long BusinessObjectFieldID) {
-        //ObjectFactory dataObjectFactory = new ObjectFactory();
-        final BusinessObjectField theBusinessObjectField = (BusinessObjectField) new BusinessObjectField(0, "businessobjectfield", "id", "ID", BusinessObjectField.FieldType.BASE,"",true,true,"");
-
-        return theBusinessObjectField;
-    }
-    
     //The method below should be updated to PUT but can't be without effort
     @RequestMapping(value = "/businessobjectfields", method = RequestMethod.POST, produces="application/json", consumes="application/json")
     public BusinessObjectField maintainBusinessObjectField(@RequestBody BusinessObjectField businessobjectfield) {

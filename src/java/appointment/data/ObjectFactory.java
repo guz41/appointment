@@ -125,7 +125,10 @@ public class ObjectFactory {
     
     public void deleteResource (Object cannedObject) {
         Session session = factory.openSession();
+        Transaction tx = session.beginTransaction();
+        session.delete(cannedObject);
         session.flush() ;
+        tx.commit();
 
     }
     

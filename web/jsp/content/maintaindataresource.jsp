@@ -59,6 +59,8 @@
                             </button>
                         </td>
                     </tr>
+                    <c:choose>
+                        <c:when test="${charResourceFields.size() > 0}">
                     <tr>
                         <td colspan="3" style="text-align: right;">
                             <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab"  ng-click="addDataResourceChar()">
@@ -66,6 +68,8 @@
                             </button>
                         </td>
                     </tr>
+                    </c:when>
+                    </c:choose>
                 </table>
                 <div class="mdl-cell mdl-cell--2-col">
                     <button class="mdl-button mdl-js-button mdl-button--raised" ng-click="addDataResource()">
