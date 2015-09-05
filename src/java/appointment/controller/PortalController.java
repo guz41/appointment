@@ -9,6 +9,7 @@ import appointment.businessobject.Customer;
 import appointment.data.ObjectFactory;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -78,6 +79,10 @@ public class PortalController {
         
         //A list of all of the fields to be displayed on the table
         ObjectFactory dataObjectFactory = new ObjectFactory();
+//        HashMap<String, String> fieldFilterCriteria = new HashMap<String, String>();
+//        fieldFilterCriteria.put("parentObject", "businessobjectfield");
+//        fieldFilterCriteria.put("fieldType", "BASE");
+//        List<BusinessObjectField> fields = (List<BusinessObjectField>)(Object) dataObjectFactory.getDataResourceList(BusinessObjectField.class,fieldFilterCriteria);
         List<BusinessObjectField> fields = (List<BusinessObjectField>)(Object) dataObjectFactory.getDataResourceList(BusinessObjectField.class,"parentObject","businessobjectfield");
 //        fields.add(new BusinessObjectField(0, "businessobjectfield", "id", "ID", FieldType.BASE,"",true,true,""));
 //        fields.add(new BusinessObjectField(1, "businessobjectfield", "parentObject", "Parent Object", FieldType.BASE,"",true,false,""));

@@ -9,6 +9,7 @@ import appointment.businessobject.Customer;
 import appointment.businessobject.CustomerChar;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Iterator;
 import org.hibernate.Criteria;
@@ -119,6 +120,16 @@ public class ObjectFactory {
         Session session = factory.openSession();
         Criteria criteria = session.createCriteria(resourceClass);
         criteria.add(Expression.eq(column, value));
+        List<Object> dataObjects = criteria.list();
+        return dataObjects;
+    }
+    
+    public List<Object> getDataResourceList(Class resourceClass, HashMap<String, String> criteriaList) {
+        Session session = factory.openSession();
+        Criteria criteria = session.createCriteria(resourceClass);
+        for (String k: criteriaList.keySet()) {
+            criteria.add(Expression.eq(k, criteriaList.get(k)));
+        }
         List<Object> dataObjects = criteria.list();
         return dataObjects;
     }
