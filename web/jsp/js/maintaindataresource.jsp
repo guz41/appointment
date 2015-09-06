@@ -94,14 +94,16 @@ appointmentApp.controller('DataResourceListCtrl', ['$scope', 'DataResource', fun
     $scope.removeUnusedDataResourceChar = function(dataResource) {
         <c:choose>
             <c:when test="${charResourceFields.size() > 0}">
-        var characteristics = dataResource.${baseResource}Characteristics;
-        var arrayLength = characteristics.length;
-        for (var i = 0; i < arrayLength; i++) {
-            if (!characteristics[i].hasOwnProperty('charType')) {
-                $scope.removeResourceChar(characteristics[i]);
-        }
-       
-      }
+        if (dataResource.hasOwnProperty('${baseResource}Characteristics')) {
+                var characteristics = dataResource.${baseResource}Characteristics;
+                var arrayLength = characteristics.length;
+                for (var i = 0; i < arrayLength; i++) {
+                    if (!characteristics[i].hasOwnProperty('charType')) {
+                        $scope.removeResourceChar(characteristics[i]);
+                }
+
+              }
+          }
       </c:when>
         </c:choose>
   }
