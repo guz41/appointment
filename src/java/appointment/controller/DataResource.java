@@ -5,6 +5,7 @@ package appointment.controller;
 
 import appointment.businessobject.BusinessObjectField;
 import appointment.businessobject.Customer;
+import appointment.businessobject.CustomerChar;
 import appointment.data.ObjectFactory;
 import java.util.ArrayList;
 import java.util.List;
@@ -44,9 +45,14 @@ public class DataResource {
     @RequestMapping(value = "/customers/{CustomerID}", method = RequestMethod.DELETE, produces="application/json")
     public String deleteCustomer(@PathVariable String CustomerID) {
         Long customerID = Long.parseLong(CustomerID);
-        Customer cannedCustomer = new Customer();
-        cannedCustomer.setID(customerID);
-        new ObjectFactory().deleteResource(cannedCustomer);
+        Customer cannedCustomer = readCustomer(customerID);
+        //cannedCustomer.setID(customerID);
+        
+        ObjectFactory aFactory = new ObjectFactory();
+        cannedCustomer.setCustomerCharacteristics(new ArrayList<CustomerChar>());
+        aFactory.updateDataResource(cannedCustomer);
+        aFactory.deleteResource(cannedCustomer);
+        
         
         return CustomerID;
     }
