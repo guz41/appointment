@@ -113,18 +113,21 @@ public class Customer {
     public Collection<CustomerChar> getCustomerCharacteristics() {
         return customerCharacteristics;
     }
-    
-    public void setCharPerson(){
-        if (this.customerCharacteristics != null) {
-            for (CustomerChar Char:this.customerCharacteristics) {
-                Char.setCustomer(this);
-            }
-        }
-    }
+ 
     /**
      * @param customerCharacteristics the customerCharacteristics to set
      */
     public void setCustomerCharacteristics(Collection<CustomerChar> customerCharacteristics) {
         this.customerCharacteristics = customerCharacteristics;
+    }
+       /**
+     * For hibernate to know the relationship between characteristics and persons
+     */
+    public void setChar(){
+        if (this.customerCharacteristics != null) {
+            for (CustomerChar Char:this.customerCharacteristics) {
+                Char.setCustomer(this);
+            }
+        }
     }
 }

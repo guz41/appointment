@@ -47,13 +47,21 @@ public class PortalController {
             
         ModelAndView model = new ModelAndView("maintainCustomer");
         model.addObject("acustomer", new Customer("Jack", "Marrows", Long.parseLong("1")));
-        
         model.addObject("baseResource", "customer");
-        
-    
         model.addObject("baseResourceFields", getBusinessObjectFields(FieldType.BASE, "customer"));
-        model.addObject("charResourceFields", getBusinessObjectFields(FieldType.CHAR, "customer"));
+        model.addObject("charResourceFields", getBusinessObjectFields(FieldType.CHAR, "customer"));    
+        return model;
+    }
     
+        @RequestMapping(value={"/resource.html"})
+    public ModelAndView retrieveResource(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+            
+        ModelAndView model = new ModelAndView("maintainResource");
+        model.addObject("acustomer", new Customer("Jack", "Marrows", Long.parseLong("1")));        
+        model.addObject("baseResource", "resource");  
+        model.addObject("baseResourceFields", getBusinessObjectFields(FieldType.BASE, "resource"));
+        model.addObject("charResourceFields", getBusinessObjectFields(FieldType.CHAR, "resource"));    
         return model;
     }
     

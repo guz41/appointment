@@ -13,7 +13,7 @@
 
    <!-- Assume students is the database name -->
    <property name="hibernate.connection.url">
-      jdbc:mysql://127.0.0.1/base
+      jdbc:mysql://jackmarrows.ddns.net/base
    </property>
    <property name="hibernate.connection.username">
       sysuser
@@ -23,6 +23,8 @@
    </property>
    <mapping class="appointment.businessobject.Customer" />
    <mapping class="appointment.businessobject.CustomerChar" />
+   <mapping class="appointment.businessobject.Resource" />
+   <mapping class="appointment.businessobject.ResourceChar" />
    <mapping class="appointment.businessobject.BusinessObjectField" />
 </session-factory>
 </hibernate-configuration>
