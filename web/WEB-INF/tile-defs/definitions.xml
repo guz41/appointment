@@ -24,7 +24,11 @@
         <put-attribute name="title" value="Maintain Field Configuration" />
         <put-attribute name="otherscripts" value="/jsp/js/maintaindataresource.jsp" />
     </definition>
-    
+    <definition name="book" extends="defaultTemplate">
+        <put-attribute name="content" value="/jsp/content/maintaindataresource.jsp" />
+        <put-attribute name="title" value="Book" />
+        <put-attribute name="otherscripts" value="/jsp/js/maintaindataresource.jsp" />
+    </definition>
 
 
 </tiles-definitions>

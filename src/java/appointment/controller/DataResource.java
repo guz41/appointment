@@ -3,6 +3,7 @@
  */
 package appointment.controller;
 
+import appointment.businessobject.Booking;
 import appointment.businessobject.BusinessObjectField;
 import appointment.businessobject.Customer;
 import appointment.businessobject.CustomerChar;
@@ -61,6 +62,25 @@ public class DataResource {
         List<Customer> theCustomers = (List<Customer>) (Object) dataObjectFactory.getDataResourceList(Customer.class);
 
         return theCustomers;
+    }
+    
+        @RequestMapping(value = "/bookings", method = RequestMethod.GET, produces = "application/json")
+    public List<Booking> readBookings() {
+        ObjectFactory dataObjectFactory = new ObjectFactory();
+        List<Booking> theBookings = (List<Booking>) (Object) dataObjectFactory.getDataResourceList(Booking.class);
+
+        return theBookings;
+    }
+    
+        //The method below should be updated to PUT but can't be without effort
+    @RequestMapping(value = "/bookings", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
+    public Booking maintainBooking(@RequestBody Booking booking) {
+        ObjectFactory dataObjectFactory = new ObjectFactory();
+        final Booking theBooking;
+        //booking.setChar();
+        theBooking = (Booking) dataObjectFactory.updateDataResource(booking);
+
+        return theBooking;
     }
 
     @RequestMapping(value = "/resources/{ResourceID}", method = RequestMethod.GET, produces = "application/json")

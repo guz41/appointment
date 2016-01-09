@@ -1,2 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Context antiJARLocking="true" path="/appointment"/>
+<Context antiJARLocking="true" path="/appointment">
+  <Resource auth="Container" driverClassName="com.mysql.jdbc.Driver" maxActive="20" maxIdle="10" maxWait="-1" name="Database" password="sysuser00" type="javax.sql.DataSource" url="jdbc:mysql://jackmarrows.ddns.net:3306/base?zeroDateTimeBehavior=convertToNull" username="sysuser"/>
+  <ResourceLink global="Database" name="base" type="javax.sql.DataSource"/>
+</Context>
