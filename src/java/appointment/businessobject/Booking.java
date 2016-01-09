@@ -16,12 +16,13 @@ import org.hibernate.annotations.Cascade;
 @Table(name = "booking")
 public class Booking {
 
-    @OneToMany(mappedBy = "booking", cascade = {CascadeType.ALL})
+    //This will need to be uncommented when it is updated to have characteristics
+ /*   @OneToMany(mappedBy = "booking", cascade = {CascadeType.ALL})
     @Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE,
         org.hibernate.annotations.CascadeType.DELETE,
         org.hibernate.annotations.CascadeType.MERGE,
         org.hibernate.annotations.CascadeType.PERSIST,
-        org.hibernate.annotations.CascadeType.DELETE_ORPHAN})
+        org.hibernate.annotations.CascadeType.DELETE_ORPHAN})*/
 
     @Id
     @GeneratedValue
@@ -39,6 +40,9 @@ public class Booking {
         this.resourceName = resourceName;
         this.description = description;
         this.cust_id = cust_id;
+    }
+    public Booking() {
+
     }
 
     public Long getID() {
