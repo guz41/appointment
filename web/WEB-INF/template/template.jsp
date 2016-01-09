@@ -93,9 +93,10 @@
                 </header>
                 <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
                     <a class="mdl-navigation__link" href="index.html"><i class="mdl-color-text--blue-grey-400 material-icons">home</i>Home</a>
-                    <a class="mdl-navigation__link" href="customer.html"><i class="mdl-color-text--blue-grey-400 material-icons">inbox</i>Manage Customers</a>
-                    <a class="mdl-navigation__link" href="resource.html"><i class="mdl-color-text--blue-grey-400 material-icons">inbox</i>Manage Resources</a>
-                    <a class="mdl-navigation__link" href="businessobjectfield.html"><i class="mdl-color-text--blue-grey-400 material-icons">inbox</i>Manage Field Config</a>
+                    <a class="mdl-navigation__link" href="customer.html"><i class="mdl-color-text--blue-grey-400 material-icons">face</i>Manage Customers</a>
+                    <a class="mdl-navigation__link" href="resource.html"><i class="mdl-color-text--blue-grey-400 material-icons">work</i>Manage Resources</a>
+                    <a class="mdl-navigation__link" href="businessobjectfield.html"><i class="mdl-color-text--blue-grey-400 material-icons">laptop</i>Manage Field Config</a>
+                    <a class="mdl-navigation__link" href="booking.html"><i class="mdl-color-text--blue-grey-400 material-icons">laptop</i>Booking</a>
 
                     <div class="mdl-layout-spacer"></div>
                     <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons">help_outline</i>Help</a>

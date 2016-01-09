@@ -41,7 +41,7 @@ public class Resource {
         
     }
     
-        public Resource(Collection<ResourceChar> resourceCharacteristics, String resourceName, String description, String type, long ID) {
+    public Resource(Collection<ResourceChar> resourceCharacteristics, String resourceName, String description, String type, long ID) {
         this.resourceCharacteristics = resourceCharacteristics;
         this.resourceName = resourceName;
         this.description = description;
