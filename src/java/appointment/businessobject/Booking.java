@@ -9,8 +9,13 @@ package appointment.businessobject;
  *
  * @author Gus
  */
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.persistence.*;
+import org.codehaus.jackson.annotate.JsonIgnore;
 import org.hibernate.annotations.Cascade;
 
 @Entity
@@ -55,7 +60,8 @@ public class Booking {
     public void setID(Long ID) {
         this.ID = ID;
     }
-
+    
+    @JsonIgnore
     public Date getStart() {
         return start;
     }
@@ -63,15 +69,41 @@ public class Booking {
     public void setStart(Date start) {
         this.start = start;
     }
+    
+    public void setFormattedStart(String start) {
+        try {
+            this.start = DateFormat.getDateTimeInstance().parse(start);
+        } catch (ParseException ex) {
+            Logger.getLogger(Booking.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public String getFormattedStart() {
+        return DateFormat.getDateTimeInstance().format(start);
+    }
 
-    public Date getEnd() {
+    @JsonIgnore
+    public Date getEnd() {        
         return end;
     }
 
     public void setEnd(Date end) {
-        this.end = end;
+            this.end = end;
     }
 
+    public void setFormattedEnd(String end) {
+        try {
+            
+            this.end = DateFormat.getDateTimeInstance().parse(end);
+        } catch (ParseException ex) {
+            Logger.getLogger(Booking.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public String getFormattedEnd() {
+        return DateFormat.getDateTimeInstance().format(end);
+    }
+    
     public Long getCust_id() {
         return cust_id;
     }
