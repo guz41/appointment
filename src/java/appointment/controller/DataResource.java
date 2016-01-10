@@ -83,6 +83,24 @@ public class DataResource {
         return theBooking;
     }
 
+    @RequestMapping(value = "/bookings/{BookingID}", method = RequestMethod.GET, produces = "application/json")
+    public Booking readBooking(@PathVariable long BookingID) {
+        ObjectFactory dataObjectFactory = new ObjectFactory();
+        final Booking theBooking = (Booking) dataObjectFactory.getDataResource(Booking.class, BookingID);
+
+        return theBooking;
+    }
+    
+    @RequestMapping(value = "/bookings/{BookingID}", method = RequestMethod.DELETE, produces = "application/json")
+    public String deleteBooking(@PathVariable String BookingID) {
+        Long bookingID = Long.parseLong(BookingID);
+        Booking cannedBooking = readBooking(bookingID);
+        ObjectFactory aFactory = new ObjectFactory();
+        aFactory.deleteResource(cannedBooking);
+
+        return BookingID;
+    }
+    
     @RequestMapping(value = "/resources/{ResourceID}", method = RequestMethod.GET, produces = "application/json")
     public Resource readResource(@PathVariable long ResourceID) {
         ObjectFactory dataObjectFactory = new ObjectFactory();

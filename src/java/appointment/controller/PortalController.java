@@ -71,9 +71,9 @@ public class PortalController {
 
         ModelAndView model = new ModelAndView("book");
         model.addObject("acustomer", new Customer("Jack", "Marrows", Long.parseLong("1")));
-        model.addObject("baseResource", "resource");
-        model.addObject("baseResourceFields", getBusinessObjectFields(FieldType.BASE, "resource"));
-        model.addObject("charResourceFields", getBusinessObjectFields(FieldType.CHAR, "resource"));
+        model.addObject("baseResource", "booking");
+        model.addObject("baseResourceFields", getBusinessObjectFields(FieldType.BASE, "booking"));
+        //model.addObject("charResourceFields", getBusinessObjectFields(FieldType.CHAR, "resource"));
         return model;
     }
 

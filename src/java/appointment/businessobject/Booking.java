@@ -9,6 +9,7 @@ package appointment.businessobject;
  *
  * @author Gus
  */
+import java.util.Date;
 import javax.persistence.*;
 import org.hibernate.annotations.Cascade;
 
@@ -28,17 +29,19 @@ public class Booking {
     @GeneratedValue
     @Column(name = "id")
     private Long ID;
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "start")
-    private Long resourceName;
+    private Date start;
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "end")
-    private Long description;
+    private Date end;
     @Column(name = "cust_id")
     private Long cust_id;
 
-    public Booking(Long ID, Long resourceName, Long description, Long cust_id) {
+    public Booking(Long ID, Date start, Date end, Long cust_id) {
         this.ID = ID;
-        this.resourceName = resourceName;
-        this.description = description;
+        this.start = start;
+        this.end = end;
         this.cust_id = cust_id;
     }
     public Booking() {
@@ -53,20 +56,20 @@ public class Booking {
         this.ID = ID;
     }
 
-    public Long getResourceName() {
-        return resourceName;
+    public Date getStart() {
+        return start;
     }
 
-    public void setResourceName(Long resourceName) {
-        this.resourceName = resourceName;
+    public void setStart(Date start) {
+        this.start = start;
     }
 
-    public Long getDescription() {
-        return description;
+    public Date getEnd() {
+        return end;
     }
 
-    public void setDescription(Long description) {
-        this.description = description;
+    public void setEnd(Date end) {
+        this.end = end;
     }
 
     public Long getCust_id() {
@@ -76,5 +79,7 @@ public class Booking {
     public void setCust_id(Long cust_id) {
         this.cust_id = cust_id;
     }
+
+    
 
 }
